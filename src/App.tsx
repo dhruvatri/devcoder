@@ -1,5 +1,9 @@
 const App = () => {
-	return <div>App</div>;
+	return (
+		<div className="">
+			<input type="text" />
+		</div>
+	);
 };
 
 export default App;
