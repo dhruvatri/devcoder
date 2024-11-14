@@ -1,8 +1,8 @@
+import ProblemPageComponent from "./components/ProblemPageComponent/ProblemPageComponent";
+
 const App = () => {
 	return (
-		<div className="">
-			<input type="text" />
-		</div>
+		<ProblemPageComponent />		
 	);
 };
 
