@@ -7,3 +7,11 @@ type User = {
 	createdAt: string;
 	updatedAt: string;
 };
+
+//Sample type
+type UserInput = {
+	name: string;
+	email: string;
+	password: string;
+	role: string;
+};
