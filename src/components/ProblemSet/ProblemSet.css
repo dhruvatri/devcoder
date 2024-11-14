@@ -1,0 +1,24 @@
+#problemSetScreen{
+    width : 60vw;
+    margin-left: 20vw;
+    margin-top : 10vh;
+}
+
+#plannerHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 1em;
+}
+
+#see-all-courses{
+    color: var(--color-brand-orange-s);
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#see-all-courses:hover{
+    color: var(--color-brand-orange);
+    cursor: pointer;
+}

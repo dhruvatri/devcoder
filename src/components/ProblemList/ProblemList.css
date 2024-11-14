@@ -1,0 +1,91 @@
+#ProblemSetProblemScreen {
+
+    width: 100%;
+    margin: auto;
+    margin-top: 1.5em;
+    background-color: var(--color-dark-divider-border-1);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  #SortProblems {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  
+  #SortProblems input[type="text"] {
+    padding: 0.7em;
+    width: 40vw;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    background-color: rgb(45, 45, 45);
+}
+
+#SortProblems input[type="text"]::placeholder {
+    color: white;
+}
+
+  
+  #SortProblems select {
+    background-color: rgb(45, 45, 45);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 2em;
+    color : white;
+  }
+  
+  .problem-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .problem-item {
+    padding: 15px;
+    background-color: rgb(45, 45, 45);
+    color : white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .problem-item:hover {
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5); /* Gray shadow with medium opacity */
+    transform: scale(1.02); /* Slight scale-up effect */
+    cursor: pointer;
+    }
+
+  .problem-item h3 {
+    margin: 0 0 10px;
+    color: #007bff;
+  }
+  
+  .problem-item p {
+    margin: 5px 0;
+    color: white;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+  }
+  
+  .page-button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: 1px solid #007bff;
+    background-color: #ffffff;
+    color: #007bff;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .page-button.active, .page-button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+  

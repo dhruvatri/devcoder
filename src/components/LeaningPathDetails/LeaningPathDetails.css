@@ -1,0 +1,27 @@
+#learning-details-screen{
+    width: 60vw;
+    margin-left: 20vw;
+    padding : 5em
+}
+
+#learning-details-header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 4em;
+}
+
+#learning-details-header img {
+    width: 20vh;
+    height: 15vh;
+    border-radius: 3em;
+    margin-right: 2em;
+}
+
+#learning-details-header p{
+    margin : 0;
+}
+
+#learning-details-header h1{
+    color: var(--color-brand-orange);
+}
