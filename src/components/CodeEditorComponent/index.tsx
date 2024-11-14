@@ -1,14 +1,14 @@
 import { CodeiumEditor } from "@codeium/react-code-editor";
-import "./CodeEditorComponent.css";
+import "./style.css";
 import { useEffect, useRef, useState } from "react";
 import Split from "react-split";
 import axios from "axios";
 
 type runtime = {
-	language: string,
-	version: string,
-	aliases: string[],
-}
+	language: string;
+	version: string;
+	aliases: string[];
+};
 
 const runnerUrl = axios.create({
 	baseURL: "https://emkc.org/api/v2/piston",
@@ -19,7 +19,7 @@ const CodeEditorComponent = () => {
 	const [value, setValue] = useState("");
 	const editorRef = useRef<typeof CodeiumEditor | null>(null);
 	const [output, setOutput] = useState("");
-	const [supports , setSupports] = useState<runtime[]>([])
+	const [supports, setSupports] = useState<runtime[]>([]);
 
 	const [input] = useState("1\n2\n");
 
@@ -34,12 +34,17 @@ const CodeEditorComponent = () => {
 		fetchData();
 	}, []);
 
-	const languageOptions = supports.map((runtime: runtime) => runtime.language);
+	const languageOptions = supports.map(
+		(runtime: runtime) => runtime.language
+	);
 
-	const versionOptions: { [key: string]: string } = supports.reduce((acc: any, runtime: runtime) => {
-		acc[runtime.language] = runtime.version;
-		return acc;
-	}, {});
+	const versionOptions: { [key: string]: string } = supports.reduce(
+		(acc: any, runtime: runtime) => {
+			acc[runtime.language] = runtime.version;
+			return acc;
+		},
+		{}
+	);
 
 	useEffect(() => {
 		if (editorRef.current) {
@@ -54,8 +59,6 @@ const CodeEditorComponent = () => {
 		editor.focus();
 	};
 
-	
-
 	const handleRun = async () => {
 		const response = await runnerUrl.post("/execute", {
 			language: language,
@@ -66,7 +69,7 @@ const CodeEditorComponent = () => {
 				},
 			],
 
-			stdin : input,
+			stdin: input,
 		});
 
 		console.log(response.data);
@@ -80,8 +83,8 @@ const CodeEditorComponent = () => {
 				<select
 					value={language}
 					onChange={(e) => {
-						setLanguage(e.target.value)
-						setValue('')
+						setLanguage(e.target.value);
+						setValue("");
 					}}
 				>
 					{languageOptions.map((language) => (
@@ -90,14 +93,16 @@ const CodeEditorComponent = () => {
 						</option>
 					))}
 				</select>
-				<button className="run-button" onClick={handleRun}>Run</button>
+				<button className="run-button" onClick={handleRun}>
+					Run
+				</button>
 			</nav>
 			<div className="CodeEditor">
 				<CodeiumEditor
 					language={language}
 					value={value}
 					onChange={(val: string | undefined) => {
-						setValue(val || '');
+						setValue(val || "");
 					}}
 					theme="vs-dark"
 					height={"100%"}
@@ -108,7 +113,7 @@ const CodeEditorComponent = () => {
 			<div className="output">
 				<div className="output-header">
 					<h2>Output</h2>
-					<button onClick={() => setOutput('')}>Clear</button>
+					<button onClick={() => setOutput("")}>Clear</button>
 				</div>
 				{output && <pre>{output}</pre>}
 			</div>

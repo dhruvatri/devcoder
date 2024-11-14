@@ -1,7 +1,7 @@
-import { UserDashBoard } from "./components";
+import { ProblemPageComponent } from "./components";
 
 const App = () => {
-	return <UserDashBoard />;
+	return <ProblemPageComponent />;
 };
 
 export default App;
