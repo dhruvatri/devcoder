@@ -1,9 +1,7 @@
+import { UserDashBoard } from "./components";
+
 const App = () => {
-	return (
-		<div className="">
-			<input type="text" />
-		</div>
-	);
+	return <UserDashBoard />;
 };
 
 export default App;

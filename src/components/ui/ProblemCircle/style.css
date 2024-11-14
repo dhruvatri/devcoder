@@ -1,0 +1,96 @@
+.problem-circle-container {
+	padding: var(--spacing-lg);
+	border-radius: var(--border-radius-md);
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.problem-circle-wrapper {
+	width: 400px;
+	height: 300px;
+	margin-bottom: var(--spacing-md);
+}
+
+.problem-stats {
+	text-align: center;
+	margin-bottom: var(--spacing-md);
+}
+
+.total-solved {
+	margin-bottom: var(--spacing-sm);
+}
+
+.solved-number {
+	font-size: var(--font-size-xxl);
+	color: var(--color-brand-orange);
+	font-weight: var(--font-weight-bold);
+}
+
+.total-number {
+	font-size: var(--font-size-large);
+	color: var(--color-dark-gray-6);
+}
+
+.attempting {
+	color: var(--color-dark-gray-6);
+	font-size: var(--font-size-small);
+}
+
+.difficulty-legend {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-sm);
+}
+
+.legend-item {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	padding: var(--spacing-xs);
+	border-radius: var(--border-radius-sm);
+	cursor: pointer;
+}
+
+.legend-item:hover,
+.legend-item.active {
+	background-color: var(--color-dark-fill-3);
+}
+
+.legend-color {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+}
+
+.legend-text {
+	display: flex;
+	justify-content: space-between;
+	flex: 1;
+}
+
+.legend-label {
+	color: var(--color-dark-gray-8);
+}
+
+.legend-value {
+	color: var(--color-dark-gray-6);
+}
+
+.chart-center-text {
+	font-size: 16px;
+	font-weight: var(--font-weight-medium);
+}
+
+.chart-value-text {
+	font-size: 14px;
+}
+
+.chart-label {
+	font-size: 14px;
+}
+
+.chart-percentage {
+	font-size: 12px;
+}
