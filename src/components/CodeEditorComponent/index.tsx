@@ -16,7 +16,7 @@ const runnerUrl = axios.create({
 
 const CodeEditorComponent = () => {
 	const [language, setLanguage] = useState<string>("python");
-	const [value, setValue] = useState("");
+	const [value, setValue] = useState(" ");
 	const editorRef = useRef<typeof CodeiumEditor | null>(null);
 	const [output, setOutput] = useState("");
 	const [supports, setSupports] = useState<runtime[]>([]);
@@ -110,13 +110,21 @@ const CodeEditorComponent = () => {
 					onMount={onMount}
 				/>
 			</div>
-			<div className="output">
-				<div className="output-header">
-					<h2>Output</h2>
-					<button onClick={() => setOutput("")}>Clear</button>
+			<Split className="split-col">
+				<div className="input">
+					<div className="input-header">
+						<h2>Input</h2>
+					</div>
+					{/* <pre>{input}</pre> */}
 				</div>
-				{output && <pre>{output}</pre>}
-			</div>
+				<div className="output">
+					<div className="output-header">
+						<h2>Output</h2>
+						<button onClick={() => setOutput("")}>Clear</button>
+					</div>
+					{output && <pre>{output}</pre>}
+				</div>
+			</Split>
 		</Split>
 	);
 };
