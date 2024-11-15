@@ -1,3 +1,21 @@
+/*import React from 'react';
+import Dashboard from './CreatorDashboardComponents/Dashboard/Dashboard';
+import './index.css';
+
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Dashboard />
+    </div>
+  );
+};
+
+export default App;*/
+
+
+
+
+
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUpForm from './ComponentsLoginandRegister/SignUpForm/SignUpForm';

@@ -6,6 +6,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import './SignUpForm.css';
 import SignWithGoogle from '../SignWithGoogle/SignWithGoogle';
 import { Code} from 'lucide-react';
+import { style } from 'framer-motion/client';
 
 const SignUpForm: React.FC = () => {
   const [name, setName] = useState<string>('');
@@ -21,7 +22,7 @@ const SignUpForm: React.FC = () => {
     setError('');
 
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError( "Passwords do not match");
       return;
     }
 
