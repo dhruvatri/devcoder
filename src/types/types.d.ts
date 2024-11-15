@@ -32,3 +32,18 @@ type Badge = {
 	name: string;
 	image: string;
 };
+
+type AuthContextType = {
+	currentUser: User | null;
+	login: (email: string, password: string) => Promise<void>;
+	logout: () => Promise<void>;
+	isLoading: boolean;
+};
+
+type Message = {
+	id: string;
+	text: string;
+	createdAt: { seconds: number; nanoseconds: number } | null;
+	uid: string;
+	photoURL: string | null;
+};
