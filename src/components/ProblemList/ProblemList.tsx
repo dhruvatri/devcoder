@@ -3,7 +3,7 @@ import './ProblemList.css';
 // import problemData from '../../assets/problems.json';
 import { useNavigate } from 'react-router-dom';
 // import submissionData from '../../assets/submissionData.json';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../../contexts/DataContext';
 import { useContext } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 

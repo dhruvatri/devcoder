@@ -2,7 +2,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 // import db from './firebaseConfig'; // Your Firebase configuration
-import {db} from './utils/firebase'
+import {db} from '../utils/firebase'
 
 interface DataContextType {
   problems: Problem[];

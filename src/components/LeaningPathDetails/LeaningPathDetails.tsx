@@ -8,7 +8,7 @@ import './LeaningPathDetails.css';
 import { useNavigate } from 'react-router-dom';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { useState } from 'react';
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../../contexts/DataContext';
 import { useContext } from 'react';
 import { useAuth } from '../../contexts/AuthProvider';
 

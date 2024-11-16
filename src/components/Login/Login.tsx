@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Login.css';
-
+import { useNavigate } from 'react-router-dom';
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>(''); 
@@ -17,6 +18,7 @@ const Login: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login Success');
+      navigate('/problemset');
     } catch (error: any) {
       console.error('Error:', error.message);
       setError("Your password may be incorrect or if you are a new user, please register.");

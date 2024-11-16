@@ -2,7 +2,7 @@ import React from 'react'
 import './LearningPathSeeAll.css'
 // import Learning from '../../assets/learningPath.json'
 import { useNavigate } from 'react-router-dom'
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../../contexts/DataContext';
 import { useContext } from 'react';
 
 

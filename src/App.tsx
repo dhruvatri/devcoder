@@ -3,7 +3,7 @@ import ProblemSet from './components/ProblemSet/ProblemSet'
 import LearningPathSeeAll from './components/LearningPathSeeAll/LearningPathSeeAll'
 import LeaningPathDetails from './components/LeaningPathDetails/LeaningPathDetails';
 
-import { DataProvider } from './DataContext';
+import { DataProvider } from './contexts/DataContext';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { GlobalChat, ProblemPageComponent, UserDashBoard } from "./components";

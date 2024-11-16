@@ -3,7 +3,7 @@ import './LearningPath.css'
 import learningPath from '../../assets/learningPath.json'
 import Learningcard from '../Learningcard/Learningcard'
 import { useNavigate } from 'react-router-dom'
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../../contexts/DataContext';
 import { useContext } from 'react';
 
 const LearningPath = () => {

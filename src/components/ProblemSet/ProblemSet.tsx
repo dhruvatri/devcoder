@@ -3,7 +3,7 @@ import './ProblemSet.css'
 import LearningPath from '../LearningPath/LearningPath'
 import ProblemList from '../ProblemList/ProblemList'
 import { useNavigate } from 'react-router-dom'
-import { DataContext } from '../../DataContext';
+import { DataContext } from '../../contexts/DataContext';
 import { useContext } from 'react';
 
 const ProblemSet = () => {
@@ -22,7 +22,7 @@ const ProblemSet = () => {
       <p>Loading...</p>
     </div>
   );
-  
+
   return (
     <div id='problemSetScreen'>
       <div id='plannerHeader'>
