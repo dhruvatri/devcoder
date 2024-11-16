@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 // import submissionData from '../../assets/submissionData.json';
 import { DataContext } from '../../DataContext';
 import { useContext } from 'react';
+import { useAuth } from '../../contexts/AuthProvider';
+
+
 interface learningTopicCardProps {
   topic: Topic;
 }
@@ -12,7 +15,7 @@ interface learningTopicCardProps {
 const LearningTopicCard : FC<learningTopicCardProps>= ({topic}) => {
 
   const {user} = useAuth();
-  const currUser = user.uid;
+  let currUser = ''; if(user?.uid !== undefined) currUser = user.uid;
 
   const { problems, submissions, loading, learningPaths } = useContext(DataContext)!;
   if (loading) return (

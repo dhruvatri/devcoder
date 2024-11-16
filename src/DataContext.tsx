@@ -1,7 +1,8 @@
 // DataContext.tsx
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
-import db from './firebaseConfig'; // Your Firebase configuration
+// import db from './firebaseConfig'; // Your Firebase configuration
+import {db} from './utils/firebase'
 
 interface DataContextType {
   problems: Problem[];
@@ -32,25 +33,27 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
           id: Number(doc.id), // Ensure ID is a number
           ...doc.data(),
         })) as Problem[];
+  
+        // Sort problems by `quesId`
+        problemsData.sort((a, b) => a.id - b.id); // Ensure quesId exists and is numeric
         setProblems(problemsData);
-
+  
         // Fetch submissions
         const submissionsCollection = collection(db, 'submissionData');
         const submissionsSnapshot = await getDocs(submissionsCollection);
         const submissionsData = submissionsSnapshot.docs.map((doc) => {
-            const data = doc.data();
-            const submission: Submission = {
-              submissionId: data.submissionId, // Assuming submissionId is stored in the document
-              userId: data.userId,
-              problemId: data.problemId,
-              status: data.status,
-              isCorrect: data.isCorrect,
-            };
-            return submission;
-          });          
+          const data = doc.data();
+          const submission: Submission = {
+            submissionId: data.submissionId, // Assuming submissionId is stored in the document
+            userId: data.userId,
+            problemId: data.problemId,
+            status: data.status,
+            isCorrect: data.isCorrect,
+          };
+          return submission;
+        });
         setSubmissions(submissionsData);
-        console.log('submission : ',submissionsData);
-
+  
         // Fetch learning paths
         const learningPathsCollection = collection(db, 'learningPath');
         const learningPathsSnapshot = await getDocs(learningPathsCollection);
@@ -59,16 +62,16 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
           ...doc.data(),
         })) as Course[];
         setLearningPaths(learningPathsData);
-        console.log("Learning : " , learningPathsData);
- 
+  
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data from Firestore:', error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
 
   return (
     <DataContext.Provider value={{ problems, submissions, learningPaths, loading }}>

@@ -54,6 +54,10 @@
 	background-color: var(--color-dark-layer-2);
 }
 
+.problem-item:nth-child(even) {
+	background-color: var(--color-dark-layer-2);
+}
+
 .problem-item:hover {
 	background-color: var(--color-dark-fill-2);
 }

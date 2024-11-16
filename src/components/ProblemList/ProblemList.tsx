@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 // import submissionData from '../../assets/submissionData.json';
 import { DataContext } from '../../DataContext';
 import { useContext } from 'react';
+import { useAuth } from '../../contexts/AuthProvider';
+
 
 const ProblemList: React.FC = () => {
   const { problems, submissions : submissionData , loading, learningPaths } = useContext(DataContext)!;
@@ -26,7 +28,7 @@ const ProblemList: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const [submissionFilter, setSubmissionFilter] = useState<string>('All');
   const {user} = useAuth();
-  const currUser = user.uid;
+  let currUser = ''; if(user?.uid!==undefined) currUser = user?.uid;
   const problemPerPage: number = 10;
 
   const submissions = submissionData as Submission[];

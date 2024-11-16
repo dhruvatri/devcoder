@@ -10,11 +10,12 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import { useState } from 'react';
 import { DataContext } from '../../DataContext';
 import { useContext } from 'react';
+import { useAuth } from '../../contexts/AuthProvider';
 
 const LeaningPathDetails = () => {
 
   const {user} = useAuth();
-  const currUser = user.uid;
+  const currUser = user?.uid;
 
   const { problems, submissions, loading, learningPaths } = useContext(DataContext)!;
   if (loading) return (
