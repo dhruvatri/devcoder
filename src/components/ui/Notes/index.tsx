@@ -30,7 +30,10 @@ const Notes: FC = () => {
 						<div className="modal-content">
 							<div className="modal-header">
 								<h2>Draggable Notes</h2>
-								<button onClick={closeModal} className="close-button">
+								<button
+									onClick={closeModal}
+									className="close-button"
+								>
 									&times;
 								</button>
 							</div>

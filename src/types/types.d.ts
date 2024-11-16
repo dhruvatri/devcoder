@@ -47,3 +47,9 @@ type Message = {
 	uid: string;
 	photoURL: string | null;
 };
+
+type runtime = {
+	language: string;
+	version: string;
+	aliases: string[];
+};

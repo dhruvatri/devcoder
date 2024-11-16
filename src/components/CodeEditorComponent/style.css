@@ -1,75 +1,104 @@
 .navbar {
-    padding: 10px;
-    display: flex;
-    width: 100%;
-    max-height: 70px;
+	padding: 10px;
+	display: flex;
+	width: 100%;
+	max-height: 70px;
 }
 
-.CodeEditor{
-    flex: 1;
+.code-editor {
+	margin-left: 10px;
+}
+
+.CodeEditor {
+	flex: 1;
 }
 
 .navbar select {
-    flex: 1;
-    text-align: end;
-    height: 30px;
-    align-items: center;
-    margin: auto;
-    padding: auto;
-    border: none;
-    outline: none;
+	flex: 1;
+	text-align: end;
+	height: 30px;
+	align-items: center;
+	margin: auto;
+	padding: auto;
+	border: none;
+	outline: none;
+    margin-right: 10px;
 
-    border-radius: 10px;
+	border-radius: 10px;
 }
 
 .navbar select option {
-    background-color: var(--color-dark-layer-2);
-    color: var(--color-dark-gray-8);
+	background-color: var(--color-dark-layer-2);
+	color: var(--color-dark-gray-8);
 }
 
-.navbar button {
+.submit-button {
+	margin: 10px;
+	padding: 5px 15px;
+	background-color: var(--color-dark-green-s);
+}
+
+.run-button {
     margin: 10px;
-    padding: 0 20px;
+    padding: 5px 15px;
     background-color: var(--color-brand-orange);
 }
 
-.navbar button:hover {
+.run-button:hover {
     background-color: var(--color-brand-orange-s);
-    border-radius: 10px;
-    scale: 1.1;
+	border-radius: 10px;
+	scale: 1.1;
+}
+
+.submit-button:hover {
+    background-color: var(--color-olive);
+	border-radius: 10px;
+	scale: 1.1;
 }
 
 a {
-    display: none;
+	display: none;
 }
 
 .output {
-    overflow-y: scroll;
-    padding: 10px;
-    min-width: 300px;
+	overflow-y: scroll;
+	padding: 10px;
+	min-width: 300px;
 }
 
 .output-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: var(--color-dark-layer-2);
-    border-radius: 10px;
-    padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+	background-color: var(--color-dark-layer-2);
+	border-radius: 10px;
+	padding: 10px;
 }
 
 .input {
-    /* overflow-y: scroll;
+	/* overflow-y: scroll;
     scrollbar-width: thin; */
-    padding: 10px;
-    min-width: 200px;
+	padding: 10px;
+	min-width: 200px;
 }
 
 .input-header {
-    display: flex;
-    justify-content: left;
+	display: flex;
+	justify-content: left;
+	padding: 10px;
+	background-color: var(--color-dark-layer-2);
+	border-radius: 10px;
+	padding: 10px;
+}
+
+pre, textarea {
+    border: 1px solid var(--color-dark-gray-8);
+    border-radius: 4px;
     padding: 10px;
-    background-color: var(--color-dark-layer-2);
-    border-radius: 10px;
-    padding: 10px;
+    height: 65%;
+    overflow: auto;
+}
+
+pre , textarea  :hover{
+    border: 1px solid var(--color-brand-orange);
 }

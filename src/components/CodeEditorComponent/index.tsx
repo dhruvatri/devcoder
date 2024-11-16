@@ -2,26 +2,16 @@ import { CodeiumEditor } from "@codeium/react-code-editor";
 import "./style.css";
 import { useEffect, useRef, useState } from "react";
 import Split from "react-split";
-import axios from "axios";
-
-type runtime = {
-	language: string;
-	version: string;
-	aliases: string[];
-};
-
-const runnerUrl = axios.create({
-	baseURL: "https://emkc.org/api/v2/piston",
-});
+import { runnerUrl } from "../../apis";
 
 const CodeEditorComponent = () => {
 	const [language, setLanguage] = useState<string>("python");
-	const [value, setValue] = useState(" ");
+	const [value, setValue] = useState("");
 	const editorRef = useRef<typeof CodeiumEditor | null>(null);
 	const [output, setOutput] = useState("");
 	const [supports, setSupports] = useState<runtime[]>([]);
 
-	const [input] = useState("1\n2\n");
+	const [input , setInput] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,8 +24,16 @@ const CodeEditorComponent = () => {
 		fetchData();
 	}, []);
 
-	const languageOptions = supports.map(
-		(runtime: runtime) => runtime.language
+	const languageOptions = Array.from(
+		new Set(
+			supports
+				.filter((runtime: runtime) =>
+					["python", "javascript", "java", "c", "c++"].includes(
+						runtime.language
+					)
+				)
+				.map((runtime: runtime) => runtime.language)
+		)
 	);
 
 	const versionOptions: { [key: string]: string } = supports.reduce(
@@ -59,7 +57,7 @@ const CodeEditorComponent = () => {
 		editor.focus();
 	};
 
-	const handleRun = async () => {
+	const fetchResponse = async (stdin:string) => {
 		const response = await runnerUrl.post("/execute", {
 			language: language,
 			version: versionOptions[language],
@@ -69,16 +67,25 @@ const CodeEditorComponent = () => {
 				},
 			],
 
-			stdin: input,
+			stdin: stdin,
 		});
 
-		console.log(response.data);
+		return response.data;
+	}
 
-		setOutput(response.data.run.output);
+	const handleRun = async () => {
+		const response = await fetchResponse(input);
+		console.log(response);
+
+		setOutput(response.run.output);
+	};
+
+	const handleSubmit = async () => {
+		
 	};
 
 	return (
-		<Split className="split-row" direction="vertical">
+		<Split className="split-row code-editor" direction="vertical">
 			<nav className="navbar">
 				<select
 					value={language}
@@ -95,6 +102,9 @@ const CodeEditorComponent = () => {
 				</select>
 				<button className="run-button" onClick={handleRun}>
 					Run
+				</button>
+				<button className="submit-button" onClick={handleSubmit}>
+					Submit
 				</button>
 			</nav>
 			<div className="CodeEditor">
@@ -115,14 +125,19 @@ const CodeEditorComponent = () => {
 					<div className="input-header">
 						<h2>Input</h2>
 					</div>
-					{/* <pre>{input}</pre> */}
+				<textarea
+					value={input}
+					onChange={(e) => setInput(e.target.value)}
+					placeholder="Enter input here..."
+					style={{ width: "100%" }}
+				/>
 				</div>
 				<div className="output">
 					<div className="output-header">
 						<h2>Output</h2>
 						<button onClick={() => setOutput("")}>Clear</button>
 					</div>
-					{output && <pre>{output}</pre>}
+					{<pre>{output}</pre>}
 				</div>
 			</Split>
 		</Split>
