@@ -29,8 +29,8 @@
 
 .edit-profile-btn {
 	width: 100%;
-	background-color: var(--color-dark-fill-3);
-	color: var(--color-dark-gray-8);
+	background-color: var(--color-brand-orange-l);
+	color: var(--color-brand-orange);
 	margin-bottom: var(--spacing-md);
 }
 

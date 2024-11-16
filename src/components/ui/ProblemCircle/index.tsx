@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 import "./style.css";
+import SolvedProblemList from "../SolvedProblemsList";
 
 type ProblemStats = {
 	easy: { solved: number; total: number };
@@ -150,9 +151,9 @@ const ProblemCircle: React.FC<ProblemCircleProps> = ({ stats }) => {
 							data={data}
 							cx="50%"
 							cy="50%"
-							innerRadius={60}
-							outerRadius={70}
-							paddingAngle={4}
+							innerRadius={50}
+							outerRadius={80}
+							paddingAngle={2}
 							dataKey="value"
 							stroke="none"
 							onMouseEnter={onPieEnter}
@@ -161,34 +162,7 @@ const ProblemCircle: React.FC<ProblemCircleProps> = ({ stats }) => {
 				</ResponsiveContainer>
 			</div>
 			<div className="difficulty-legend">
-				{data.map((item, index) => (
-					<div
-						key={item.name}
-						className={`legend-item ${activeIndex === index ? "active" : ""}`}
-						onClick={() => setActiveIndex(index)}
-					>
-						<div
-							className="legend-color"
-							style={{ backgroundColor: item.fill, stroke: "none" }}
-						></div>
-						<div className="legend-text">
-							<span className="legend-label">{item.name}</span>
-							<span className="legend-value">
-								{item.value}/{item.total}
-							</span>
-						</div>
-					</div>
-				))}
-			</div>
-			<div className="problem-stats">
-				<div className="total-solved">
-					<span className="solved-number">{totalSolved}</span>
-					<span className="total-number">/{totalProblems}</span>
-					<p>Solved</p>
-				</div>
-				<div className="attempting">
-					<span>{stats.attempting} Attempting</span>
-				</div>
+				<SolvedProblemList />
 			</div>
 		</div>
 	);

@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { Notes, ProblemCircle, ProfileCard, StatsCard } from "../ui";
 import { mockProblemStats } from "../../data";
+import ActivityCalendar from "../ui/ActivityCalendarComponent";
 
 const UserDashBoard: React.FC = () => {
 	const userProfile = {
@@ -16,7 +17,6 @@ const UserDashBoard: React.FC = () => {
 
 	return (
 		<div className="dashboard-container">
-			<Notes />
 			<div className="dashboard-grid">
 				<div className="left-column">
 					<ProfileCard profile={userProfile} />
@@ -31,12 +31,8 @@ const UserDashBoard: React.FC = () => {
 						totalParticipants={622576}
 						attended={userProfile.attended}
 					/>
-					<div className="problems-section mt-md">
-						<ProblemCircle stats={mockProblemStats} />
-						<div className="problem-stats">
-							{/* Problem stats implementation */}
-						</div>
-					</div>
+					<ActivityCalendar />
+					<ProblemCircle stats={mockProblemStats} />
 				</div>
 			</div>
 		</div>

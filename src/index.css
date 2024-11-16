@@ -22,6 +22,7 @@
 	--color-dark-gray-8: rgb(219, 219, 219);
 	--color-brand-orange: rgb(255, 161, 22);
 	--color-brand-orange-s: rgb(193, 122, 15);
+	--color-brand-orange-l: rgb(255, 161, 22, 0.1);
 	--color-dark-yellow: rgb(255, 192, 30);
 	--color-dark-pink: rgb(255, 55, 95);
 	--color-olive: rgb(0, 184, 163);
@@ -30,6 +31,7 @@
 
 	/* Fonts */
 	--font-primary: "Arial", sans-serif;
+	--font-size-xs: 0.75rem;
 	--font-size-small: 0.875rem;
 	--font-size-base: 1rem;
 	--font-size-large: 1.25rem;
@@ -99,10 +101,6 @@ button {
 	background-color: var(--color-brand-orange);
 	color: white;
 	transition: background-color 0.2s ease;
-}
-
-button:hover {
-	background-color: var(--color-brand-orange-s);
 }
 
 input,
