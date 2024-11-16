@@ -1,41 +1,80 @@
-import React, { useState } from 'react';
-import styles from './AddCourse.module.css';
+'use client'
+
+import React, { useState } from 'react'
+import styles from './AddCourse.module.css'
+
+interface Question {
+  id: number
+  title: string
+}
+
+interface Topic {
+  topicName: string
+  questions: Question[]
+}
 
 interface Course {
-  title: string;
-  description: string;
-  difficulty: string;
+  name: string
+  description: string
+  imageUrl: string
+  topics: Topic[]
 }
 
 interface AddCourseProps {
-  onAddCourse: (course: Course) => void;
+  onAddCourse: (course: Course) => void
 }
 
 const AddCourse: React.FC<AddCourseProps> = ({ onAddCourse }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [difficulty, setDifficulty] = useState('');
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
+  const [imageUrl, setImageUrl] = useState('')
+  const [topics, setTopics] = useState<Topic[]>([{ topicName: '', questions: [] }])
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onAddCourse({ title, description, difficulty });
-    setTitle('');
-    setDescription('');
-    setDifficulty('');
-  };
+    e.preventDefault()
+    onAddCourse({ name, description, imageUrl, topics })
+    setName('')
+    setDescription('')
+    setImageUrl('')
+    setTopics([{ topicName: '', questions: [] }])
+  }
+
+  const addTopic = () => {
+    setTopics([...topics, { topicName: '', questions: [] }])
+  }
+
+  const updateTopic = (index: number, topicName: string) => {
+    const newTopics = [...topics]
+    newTopics[index].topicName = topicName
+    setTopics(newTopics)
+  }
+
+  const addQuestion = (topicIndex: number) => {
+    const newTopics = [...topics]
+    newTopics[topicIndex].questions.push({ id: newTopics[topicIndex].questions.length + 1, title: '' })
+    setTopics(newTopics)
+  }
+
+  const updateQuestion = (topicIndex: number, questionIndex: number, field: keyof Question, value: string | number) => {
+    const newTopics = [...topics]
+    newTopics[topicIndex].questions[questionIndex][field] = value as never
+    setTopics(newTopics)
+  }
 
   return (
     <div className={styles.container}>
+      <h2 className={styles.title}>Add New Course</h2>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
-          <label htmlFor="title" className={styles.label}>Course Title</label>
+          <label htmlFor="name" className={styles.label}>Course Name</label>
           <input
-            id="title"
+            id="name"
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter course title"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter course name"
             className={styles.input}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -47,26 +86,68 @@ const AddCourse: React.FC<AddCourseProps> = ({ onAddCourse }) => {
             placeholder="Enter course description"
             className={styles.textarea}
             rows={4}
+            required
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="difficulty" className={styles.label}>Difficulty Level</label>
-          <select
-            id="difficulty"
-            value={difficulty}
-            onChange={(e) => setDifficulty(e.target.value)}
-            className={styles.select}
-          >
-            <option value="">Select difficulty</option>
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
+          <label htmlFor="imageUrl" className={styles.label}>Image URL</label>
+          <input
+            id="imageUrl"
+            type="url"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="Enter image URL"
+            className={styles.input}
+            required
+          />
         </div>
-        <button type="submit" className={styles.button}>Submit Course</button>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>Topics</label>
+          {topics.map((topic, topicIndex) => (
+            <div key={topicIndex} className={styles.topic}>
+              <input
+                type="text"
+                value={topic.topicName}
+                onChange={(e) => updateTopic(topicIndex, e.target.value)}
+                placeholder="Enter topic name"
+                className={styles.input}
+                required
+              />
+              <div className={styles.questions}>
+                {topic.questions.map((question, questionIndex) => (
+                  <div key={questionIndex} className={styles.question}>
+                    <input
+                      type="number"
+                      value={question.id}
+                      onChange={(e) => updateQuestion(topicIndex, questionIndex, 'id', parseInt(e.target.value))}
+                      placeholder="Question ID"
+                      className={styles.input}
+                      required
+                    />
+                    <input
+                      type="text"
+                      value={question.title}
+                      onChange={(e) => updateQuestion(topicIndex, questionIndex, 'title', e.target.value)}
+                      placeholder="Question title"
+                      className={styles.input}
+                      required
+                    />
+                  </div>
+                ))}
+                <button type="button" onClick={() => addQuestion(topicIndex)} className={styles.addButton}>
+                  Add Question
+                </button>
+              </div>
+            </div>
+          ))}
+          <button type="button" onClick={addTopic} className={styles.addButton}>
+            Add Topic
+          </button>
+        </div>
+        <button type="submit" className={styles.submitButton}>Add Course</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default AddCourse;
+export default AddCourse

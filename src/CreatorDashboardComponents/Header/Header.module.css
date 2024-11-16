@@ -4,7 +4,7 @@
     align-items: center;
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
-    background-color: var(--color-dark-layer-2);
+    background-color: var(--color-dark-layer-1);
     border-radius: var(--border-radius-md);
   }
   
@@ -31,4 +31,5 @@
   
   .userIcon {
     color: var(--color-brand-orange);
+    font-size: var(--font-size-lg);
   }

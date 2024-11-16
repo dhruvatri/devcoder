@@ -1,0 +1,57 @@
+/* Button to open the modal */
+.open-button {
+	padding: 10px 20px;
+	background-color: #4a90e2;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+/* Modal overlay */
+.modal-overlay {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	max-width: 600px;
+	background: white;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	overflow: hidden;
+	z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* Header for dragging */
+.modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #4a90e2;
+	padding: 10px;
+	color: white;
+	cursor: grab;
+}
+
+/* Close button */
+.close-button {
+	background: none;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+/* Modal body */
+.modal-body {
+	padding: 20px;
+	font-size: 1rem;
+}

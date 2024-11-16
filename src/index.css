@@ -63,7 +63,7 @@ body {
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-regular);
 	color: var(--color-dark-gray-8);
-	background-color: var(--color-dark-layer-1);
+	background-color: var(--color-dark-layer-2);
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

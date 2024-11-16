@@ -3,10 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '../../utils/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
-import './SignUpForm.css';
-import SignWithGoogle from '../SignWithGoogle/SignWithGoogle';
 import { Code} from 'lucide-react';
 import { style } from 'framer-motion/client';
+import { SignWithGoogle } from '../../components/ui';
 
 const SignUpForm: React.FC = () => {
   const [name, setName] = useState<string>('');

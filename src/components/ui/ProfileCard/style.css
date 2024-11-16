@@ -1,0 +1,42 @@
+.profile-card {
+	background-color: var(--color-dark-layer-1);
+	border-radius: var(--border-radius-md);
+	padding: var(--spacing-md);
+}
+
+.profile-header {
+	display: flex;
+	gap: var(--spacing-md);
+	margin-bottom: var(--spacing-md);
+}
+
+.profile-avatar {
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background-color: var(--color-dark-fill-2);
+}
+
+.profile-info h2 {
+	font-size: var(--font-size-large);
+	margin-bottom: var(--spacing-xs);
+}
+
+.username {
+	color: var(--color-dark-gray-6);
+	margin-bottom: var(--spacing-xs);
+}
+
+.edit-profile-btn {
+	width: 100%;
+	background-color: var(--color-dark-fill-3);
+	color: var(--color-dark-gray-8);
+	margin-bottom: var(--spacing-md);
+}
+
+.github-info {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-sm);
+	color: var(--color-dark-gray-6);
+}
