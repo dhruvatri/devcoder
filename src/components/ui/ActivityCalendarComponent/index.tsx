@@ -23,13 +23,19 @@ const mapActivityToLevel = (count: number): number => {
 
 const ActivityCalendarComponent = () => {
 	const explicitTheme: ThemeInput = {
-		light: ["#f0f0f0", "#c4edde", "#7ac7c4", "#f73859", "#384259"],
+		light: [
+			"#383838",
+			"#109932", // darker light green
+			"#28c244", // darker medium light green
+			"#7fe18b", // darker standard green (moderate activity)
+			"#d8ffda",
+		],
 		dark: [
 			"#383838",
-			"#388e3c52", // darker shade of very light green
-			"#388e3c8a", // darker light green
-			"#388e3cc8", // darker medium light green
-			"#388e3c", // darker standard green (moderate activity)
+			"#109932", // darker light green
+			"#28c244", // darker medium light green
+			"#7fe18b", // darker standard green (moderate activity)
+			"#d8ffda",
 		],
 	};
 

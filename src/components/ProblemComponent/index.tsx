@@ -1,18 +1,8 @@
 import React from "react";
 import "./style.css";
-import {
-	Navigate,
-	NavLink,
-	Outlet,
-	Route,
-	Routes,
-	useParams,
-} from "react-router-dom";
-import ProblemDescriptionComponent from "../ProblemDescriptionComponent";
-import GlobalChat from "../GlobalChat/index";
-import { Notes } from "../ui";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 
-const ProblemComponent = ({ pid }: { pid: number }) => {
+const ProblemComponent = () => {
 	const id = useParams();
 	console.log(id);
 	// const id:string = "1";

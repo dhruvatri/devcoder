@@ -1,0 +1,42 @@
+.problem-description {
+    width: 95%;
+    height: 100%;
+    margin: 20px;
+    padding: 20px;
+
+    border: 1px solid var(--color-dark-divider-border-2);
+    border-radius: var(--border-radius-md);
+}
+
+.description-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.description-header > span {
+    font-size: var(--font-size-base);
+    font-weight: bold;
+
+    background-color: var(--color-olive);
+    color: var(--color-dark-gray-8);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+}
+
+.example-list {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.examples {
+    margin-bottom: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-dark-divider-border-2);
+    border-top: 1px solid var(--color-dark-divider-border-2);
+}
+
+.constraints-list {
+    padding-left: 40px;
+}
