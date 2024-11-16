@@ -1,0 +1,207 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--color-dark-layer-2);
+  color: var(--color-dark-gray-8);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: var(--color-dark-layer-1);
+}
+
+.nav {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.navButton {
+  background-color: transparent;
+  color: var(--color-dark-gray-7);
+  border: none;
+  font-size: var(--font-size-base);
+  transition: color 0.3s ease;
+}
+
+.navButton:hover {
+  color: var(--color-brand-orange);
+}
+
+.authButtons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.loginButton, .registerButton {
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  transition: all 0.3s ease;
+}
+
+.loginButton {
+  background-color: transparent;
+  border: 2px solid var(--color-brand-orange);
+  color: var(--color-brand-orange);
+}
+
+.loginButton:hover {
+  background-color: var(--color-brand-orange);
+  color: var(--color-dark-layer-2);
+}
+
+.registerButton {
+  background-color: var(--color-brand-orange);
+  color: var(--color-dark-layer-2);
+}
+
+.registerButton:hover {
+  background-color: var(--color-brand-orange-s);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.logo {
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-brand-orange);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 5px rgba(255, 161, 22, 0.5); }
+  100% { text-shadow: 0 0 20px rgba(255, 161, 22, 0.8); }
+}
+
+.tagline {
+  font-size: var(--font-size-large);
+  color: var(--color-dark-gray-7);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.editorContainer {
+  display: flex;
+  gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.problemStatement {
+  flex: 1;
+  background-color: var(--color-dark-layer-1);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+}
+
+.problemStatement h2 {
+  color: var(--color-dark-yellow);
+  margin-bottom: var(--spacing-md);
+}
+
+.codeEditor {
+  flex: 2;
+  background-color: var(--color-dark-layer-1);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-gray-8);
+}
+
+.languageSelect {
+  background-color: var(--color-dark-layer-2);
+  color: var(--color-dark-gray-8);
+  border: 1px solid var(--color-dark-divider-border-2);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+}
+
+.runButton {
+  background-color: var(--color-dark-green-s);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.runButton:hover {
+  background-color: var(--color-olive);
+}
+
+.codeArea {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-dark-layer-2);
+  color: var(--color-dark-gray-8);
+  font-family: monospace;
+  font-size: var(--font-size-base);
+  padding: var(--spacing-md);
+  border: none;
+  resize: none;
+}
+
+.features {
+  display: flex;
+  gap: var(--spacing-lg);
+  width: 100%;
+  max-width: 1200px;
+}
+
+.featureCard {
+  flex: 1;
+  background-color: var(--color-dark-layer-1);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+}
+
+.featureCard h3 {
+  color: var(--color-dark-pink);
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer {
+  background-color: var(--color-dark-layer-1);
+  color: var(--color-dark-gray-7);
+  text-align: center;
+  padding: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+  .editorContainer {
+    flex-direction: column;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+}

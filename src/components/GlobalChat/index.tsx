@@ -93,6 +93,9 @@ interface ChatMessageProps {
 function ChatMessage({ message }: ChatMessageProps) {
 	const { text, uid, photoURL } = message;
 	const isSentByCurrentUser = uid === auth.currentUser?.uid;
+
+	console.log(auth.currentUser);
+
 	const messageClass = isSentByCurrentUser ? "sent" : "received";
 
 	return (

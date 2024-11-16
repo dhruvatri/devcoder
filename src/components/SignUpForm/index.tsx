@@ -3,8 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../utils/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import "./SignUpForm.css";
-import SignWithGoogle from "../SignWithGoogle/SignWithGoogle";
+import "./style.css";
+import SignWithGoogle from "../ui/SignWithGoogle";
 import { Code } from "lucide-react";
 
 const SignUpForm: React.FC = () => {

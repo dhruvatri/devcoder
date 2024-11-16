@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "name": "Introduction to Programming",
+    "description": "An introductory course covering fundamental programming concepts and syntax.",
+    "imageUrl": "data:image/png;base64,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",
+    "topics": [
+      {
+        "topicName": "Basic Syntax",
+        "questions": [
+          { "id": 1, "title": "Two Sum" },
+          { "id": 2, "title": "Palindrome Number" }
+        ]
+      },
+      {
+        "topicName": "Control Flow",
+        "questions": [
+          { "id": 8, "title": "Implement strStr()" },
+          { "id": 5, "title": "Valid Parentheses" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Data Structures Fundamentals",
+    "description": "Fundamental concepts of data structures and their practical applications.",
+    "imageUrl": "https://cdn-icons-png.flaticon.com/512/9118/9118880.png",
+    "topics": [
+      {
+        "topicName": "Arrays",
+        "questions": [
+          { "id": 1, "title": "Two Sum" },
+          { "id": 6, "title": "Remove Duplicates from Sorted Array" }
+        ]
+      },
+      {
+        "topicName": "Linked Lists",
+        "questions": [
+          { "id": 7, "title": "Merge Two Sorted Lists" },
+          { "id": 17, "title": "Linked List Cycle" }
+        ]
+      },
+      {
+        "topicName": "Stacks and Queues",
+        "questions": [
+          { "id": 5, "title": "Valid Parentheses" },
+          { "id": 19, "title": "Reverse Linked List" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Algorithmic Thinking",
+    "description": "Develop problem-solving skills through algorithmic strategies and analysis.",
+    "imageUrl": "https://as2.ftcdn.net/v2/jpg/02/35/31/89/1000_F_235318906_gpzwW7sVbr8qFXCWJ6ZKLFdelcY6gEMC.jpg",
+    "topics": [
+      {
+        "topicName": "Sorting and Searching",
+        "questions": [
+          { "id": 9, "title": "Search Insert Position" },
+          { "id": 14, "title": "Three Sum" }
+        ]
+      },
+      {
+        "topicName": "Binary Search",
+        "questions": [
+          { "id": 9, "title": "Search Insert Position" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Dynamic Programming Basics",
+    "description": "Introduction to dynamic programming and optimization techniques.",
+    "imageUrl": "https://camo.githubusercontent.com/029add78143c80baf1f5fad1e1ca8f67dd2c45c4906b0e53a991546b8c55f88e/68747470733a2f2f6173736574732e6c656574636f64652e636f6d2f7374617469635f6173736574732f6f74686572732f44505f492e706e67",
+    "topics": [
+      {
+        "topicName": "Fibonacci and Recurrence Relations",
+        "questions": [
+          { "id": 11, "title": "Climbing Stairs" }
+        ]
+      },
+      {
+        "topicName": "Dynamic Subarrays",
+        "questions": [
+          { "id": 10, "title": "Maximum Subarray" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Graph Theory Essentials",
+    "description": "Explore fundamental concepts of graph theory and their applications.",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRag_CJP_0luWMCNeXFzxhUwkVAeV4dGbyqDQ&s",
+    "topics": [
+      {
+        "topicName": "Graph Representation",
+        "questions": []
+      },
+      {
+        "topicName": "Graph Traversal",
+        "questions": []
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "String Manipulation",
+    "description": "Techniques for processing and manipulating strings effectively.",
+    "imageUrl": "https://www.svgrepo.com/show/361355/symbol-string.svg",
+    "topics": [
+      {
+        "topicName": "Basic String Operations",
+        "questions": [
+          { "id": 4, "title": "Longest Common Prefix" },
+          { "id": 3, "title": "Roman to Integer" }
+        ]
+      },
+      {
+        "topicName": "Pattern Matching",
+        "questions": [
+          { "id": 8, "title": "Implement strStr()" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Tree and Binary Tree",
+    "description": "Understand tree data structures and binary tree algorithms.",
+    "imageUrl": "https://cdn3.iconfinder.com/data/icons/data-visualization-3/64/binary-tree-diversity-data-512.png",
+    "topics": [
+      {
+        "topicName": "Binary Tree Basics",
+        "questions": [
+          { "id": 20, "title": "Maximum Depth of Binary Tree" },
+          { "id": 18, "title": "Binary Tree Inorder Traversal" }
+        ]
+      }
+    ]
+  }
+]

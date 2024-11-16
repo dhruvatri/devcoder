@@ -10,3 +10,4 @@ export { default as StatsCard } from "./StatsCard";
 export { default as ProblemCircle } from "./ProblemCircle";
 export { default as Notes } from "./Notes";
 export { default as ActivityCalender } from "./ActivityCalendarComponent";
+export { default as SignWithGoogle } from "./SignWithGoogle";

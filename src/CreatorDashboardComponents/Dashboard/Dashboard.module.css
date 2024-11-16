@@ -1,0 +1,219 @@
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--color-dark-layer-2);
+  padding: var(--spacing-md);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-md);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.statsContainer {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-dark-layer-1);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+}
+
+.statCircle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.tab {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-dark-fill-2);
+  color: var(--color-dark-gray-7);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-weight: var(--font-weight-medium);
+  transition: all 0.2s ease;
+  margin-right: 10px;
+}
+
+.tab:hover {
+  background-color: var(--color-dark-fill-3);
+}
+
+.activeTab {
+  background-color: var(--color-brand-orange);
+  color: white;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.card {
+  background-color: var(--color-dark-layer-1);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow);
+}
+
+.cardTitle {
+  font-size: var(--font-size-large);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-dark-blue-s);
+}
+
+.cardDescription {
+  color: var(--color-dark-gray-7);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cardDifficulty {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-dark-yellow);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cardTags {
+  font-size: var(--font-size-small);
+  color: var(--color-dark-gray-6);
+}
+
+.courseImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.topicsContainer {
+  margin-top: var(--spacing-md);
+}
+
+.topic {
+  margin-bottom: var(--spacing-sm);
+}
+
+.topicName {
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-xs);
+}
+
+.questionList {
+  list-style-type: none;
+  padding-left: var(--spacing-md);
+}
+
+.questionItem {
+  font-size: var(--font-size-small);
+  color: var(--color-dark-gray-7);
+  margin-bottom: var(--spacing-xs);
+}
+
+.addButton {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background-color: var(--color-brand-orange);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-xl);
+  box-shadow: var(--box-shadow);
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: var(--color-brand-orange-s);
+  transform: scale(1.05);
+}
+
+.addIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: var(--color-dark-layer-1);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: var(--color-dark-gray-7);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  color: var(--color-dark-gray-8);
+}
