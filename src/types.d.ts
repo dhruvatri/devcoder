@@ -34,7 +34,7 @@ interface Problem {
 
 interface Submission {
     submissionId: number;
-    userId: number;
+    userId: string | number;
     problemId: number;
     status: 'completed' | 'attempted' | 'to-do';
     isCorrect: boolean | null;

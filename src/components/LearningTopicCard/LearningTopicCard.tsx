@@ -10,6 +10,10 @@ interface learningTopicCardProps {
 }
 
 const LearningTopicCard : FC<learningTopicCardProps>= ({topic}) => {
+
+  const {user} = useAuth();
+  const currUser = user.uid;
+
   const { problems, submissions, loading, learningPaths } = useContext(DataContext)!;
   if (loading) return (
     <div id="loading-for-data-page">
@@ -30,7 +34,7 @@ const LearningTopicCard : FC<learningTopicCardProps>= ({topic}) => {
 
 
     // To determine status of problems for icondisplay
-  const getProblemStatus = (problemId: number, userId: number): string => {
+  const getProblemStatus = (problemId: number, userId: string): string => {
     const userSubmissions = submissions.filter(
       (submission) => submission.problemId === problemId && submission.userId === userId
     );
@@ -62,7 +66,7 @@ const LearningTopicCard : FC<learningTopicCardProps>= ({topic}) => {
       // Calculate progress percentage for the topic
     const totalQuestions = enrichedQuestions.length;
     const completedQuestions = enrichedQuestions.filter(
-        (question) => getProblemStatus(question.id, 1) === 'completed'
+        (question) => getProblemStatus(question.id, currUser) === 'completed'
     ).length;
 
     const progressPercentage = totalQuestions > 0 ? (completedQuestions / totalQuestions) * 100 : 0;
@@ -84,7 +88,7 @@ const LearningTopicCard : FC<learningTopicCardProps>= ({topic}) => {
             <div key={problem.id} className="problem-item" onClick={()=>navigate(`/problem/${problem.id}`)}>
             <div className='question-card-header'>
             <h3>{problem.id}: {problem.title}</h3>
-            <img className='question-status' src={getProblemStatus(problem.id,1)==='completed' ? 'https://wallpapers.com/images/hd/green-check-mark-black-background-h4sar2aihe79iwgr-2.jpg' : getProblemStatus(problem.id,1) ==='attempted' ? 'https://thumbs.dreamstime.com/b/red-black-grunge-brush-stroke-cross-no-decline-aggressive-vector-vintage-sign-curved-isolated-check-mark-object-dark-background-95414900.jpg' : 'https://image.freepik.com/free-icon/minus-sign-in-a-square_318-53201.jpg' }></img>
+            <img className='question-status' src={getProblemStatus(problem.id,currUser)==='completed' ? 'https://wallpapers.com/images/hd/green-check-mark-black-background-h4sar2aihe79iwgr-2.jpg' : getProblemStatus(problem.id,currUser) ==='attempted' ? 'https://thumbs.dreamstime.com/b/red-black-grunge-brush-stroke-cross-no-decline-aggressive-vector-vintage-sign-curved-isolated-check-mark-object-dark-background-95414900.jpg' : 'https://image.freepik.com/free-icon/minus-sign-in-a-square_318-53201.jpg' }></img>
           </div>
             <p>{problem.description}</p>
             <p>

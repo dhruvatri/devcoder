@@ -25,12 +25,13 @@ const ProblemList: React.FC = () => {
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All');
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const [submissionFilter, setSubmissionFilter] = useState<string>('All');
-  const [currentUser,setCurrentUser] = useState<number>(1);
+  const {user} = useAuth();
+  const currUser = user.uid;
   const problemPerPage: number = 10;
 
   const submissions = submissionData as Submission[];
   // To determine status of problems for sorting 
-  const getProblemStatus = (problemId: number, userId: number): string => {
+  const getProblemStatus = (problemId: number, userId: string): string => {
     const userSubmissions = submissions.filter(
       (submission) => submission.problemId === problemId && submission.userId === userId
     );
@@ -51,7 +52,7 @@ const ProblemList: React.FC = () => {
       problem.id.toString().includes(searchTerm); // Check if search term matches title or ID
     const matchesDifficulty = selectedDifficulty === 'All' || problem.difficulty === selectedDifficulty;
     const matchesTag = selectedTag === 'All' || problem.tags.includes(selectedTag);
-    const status = getProblemStatus(problem.id, currentUser);
+    const status = getProblemStatus(problem.id, currUser);
     const matchesSubmissionFilter = submissionFilter === 'All' || status === submissionFilter;
 
     return matchesSearch && matchesDifficulty && matchesTag && matchesSubmissionFilter;
@@ -137,7 +138,7 @@ const ProblemList: React.FC = () => {
         <div key={problem.id} className="problem-item" onClick={()=>navigate(`/problem/${problem.id}`)}>
           <div className='question-card-header'>
             <h3>{problem.id}: {problem.title}</h3>
-            <img className='question-status' src={getProblemStatus(problem.id,currentUser)==='completed' ? 'https://wallpapers.com/images/hd/green-check-mark-black-background-h4sar2aihe79iwgr-2.jpg' : getProblemStatus(problem.id,currentUser) ==='attempted' ? 'https://thumbs.dreamstime.com/b/red-black-grunge-brush-stroke-cross-no-decline-aggressive-vector-vintage-sign-curved-isolated-check-mark-object-dark-background-95414900.jpg' : 'https://image.freepik.com/free-icon/minus-sign-in-a-square_318-53201.jpg' }></img>
+            <img className='question-status' src={getProblemStatus(problem.id,currUser)==='completed' ? 'https://wallpapers.com/images/hd/green-check-mark-black-background-h4sar2aihe79iwgr-2.jpg' : getProblemStatus(problem.id,currUser) ==='attempted' ? 'https://thumbs.dreamstime.com/b/red-black-grunge-brush-stroke-cross-no-decline-aggressive-vector-vintage-sign-curved-isolated-check-mark-object-dark-background-95414900.jpg' : 'https://image.freepik.com/free-icon/minus-sign-in-a-square_318-53201.jpg' }></img>
           </div>
           <p>{problem.description}</p>
           <p>

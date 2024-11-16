@@ -13,6 +13,9 @@ import { useContext } from 'react';
 
 const LeaningPathDetails = () => {
 
+  const {user} = useAuth();
+  const currUser = user.uid;
+
   const { problems, submissions, loading, learningPaths } = useContext(DataContext)!;
   if (loading) return (
     <div id="loading-for-data-page">
@@ -38,7 +41,7 @@ const LeaningPathDetails = () => {
   const allQuestions = learningPlan?.topics.flatMap((topic) => topic.questions) || [];
   const enrichedQuestions = allQuestions.map((question) => {
     const problem = problems.find((p) => p.id === question.id);
-    const submission = submissionData.find((s) => s.problemId === question.id && s.userId === 1);
+    const submission = submissionData.find((s) => s.problemId === question.id && s.userId === currUser);
     return {
       ...question,
       description: problem?.description || '',
