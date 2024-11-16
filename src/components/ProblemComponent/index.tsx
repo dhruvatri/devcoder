@@ -1,18 +1,66 @@
-import React from 'react';
-import ProblemSet from '../../utils/problems.json'
-import parse from 'html-react-parser'
+import React from "react";
+import "./style.css";
+import { Navigate, NavLink, Route, Routes, useParams } from 'react-router-dom';
+import ProblemDescriptionComponent from "../ProblemDescriptionComponent";
+import GlobalChat from '../GlobalChat/index';
+import { Notes } from "../ui";
 
-interface ProblemComponentProps {
-  pid: number;
-}
 
-const ProblemComponent: React.FC<ProblemComponentProps> = ({ pid }) => {
-  return (
-    <div className='problem'>
-      {parse(ProblemSet[pid-1].title)}
-      {parse(ProblemSet[pid-1].description)}
-    </div>
-  )
-}
+const ProblemComponent = () => {
+	const id: string = useParams();
+	// const id:string = "1";
 
-export default ProblemComponent
+	return (
+		// <div className='problem'>
+		//   {parse(ProblemSet[pid-1].title)}
+		//   {parse(ProblemSet[pid-1].description)}
+		// </div>
+		<div className="problem">
+			<nav>
+				<ul>
+					<li>
+						<NavLink 
+							to="/description"
+							className={({ isActive }) => (isActive ? "active-link" : "link")}>
+							Description
+						</NavLink>
+					</li>
+					<li>
+						<NavLink 
+							to="/notes"
+							className={({ isActive }) => (isActive ? "active-link" : "link")}>
+							Notes
+						</NavLink>
+					</li>
+					<li>
+						<NavLink 
+							to="/chat"
+							className={({ isActive }) => (isActive ? "active-link" : "link")}>
+							Chat
+						</NavLink>
+					</li>
+				</ul>
+			</nav>
+			<Routes>
+				<Route
+					path="/"
+					element={<Navigate to="/description" replace={true} />}
+				/>
+				<Route
+					path="/description"
+					Component={ProblemDescriptionComponent}
+				/>
+				<Route
+					path="/chat"
+					Component={GlobalChat}
+				/>
+				<Route
+					path="/notes"
+					Component={Notes}
+				/>
+			</Routes>
+		</div>
+	);
+};
+
+export default ProblemComponent;

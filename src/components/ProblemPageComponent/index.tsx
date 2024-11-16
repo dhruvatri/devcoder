@@ -5,11 +5,13 @@ import ProblemComponent from "../ProblemComponent";
 
 const ProblemPageComponent = () => {
 	return (
-		<Split className="split-col" minSize={0}>
-			<ProblemComponent pid={1} />
-			{/* <CodeEditorComponent /> */}
-			<CodeEditorComponent />
-		</Split>
+		<div className="problem-page">
+			<Split className="split-col" minSize={0}>
+				<ProblemComponent pid={1} />
+				{/* <CodeEditorComponent /> */}
+				<CodeEditorComponent />
+			</Split>
+		</div>
 	);
 };
 
