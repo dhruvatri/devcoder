@@ -33,9 +33,33 @@ const ProblemDescriptionComponent: React.FC<ProblemDescriptionComponentProps> = 
 				<h1>{id+'.  '}{problem.title}</h1>
 				<span>{problem.difficulty}</span>
 			</div>
-		  <p>{problem.description}</p>
-		  <p>Examples:</p>
-		  <p>{problem.example}</p>
+		  <p>{problem.description}</p> 
+		  {problem.example ? (
+			<div className='examples'>
+				<p>Examples:</p>
+				{Array.isArray(problem.example) ? (
+					<ul className='example-list'>
+						{problem.example.map((ex, index) => (
+							<li key={index}>{ex}</li>
+						))}
+					</ul>
+				) : (
+					<p>{problem.example}</p>
+				)}
+			</div>
+		  ): null}
+
+		  {problem.constraints && Array.isArray(problem.constraints) ? (
+			<div className='constraints'>
+				<p>Constraints:</p>
+				<ul className='constraints-list'>
+					{problem.constraints.map((constraint:string, index:number) => (
+						<li key={index}>{constraint}</li>
+					))}
+				</ul>
+			</div>
+		  ) : null}
+
 		</div>
 	  ) : (
 		<p>Loading...</p>

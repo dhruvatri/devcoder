@@ -63,4 +63,5 @@ interface Problem {
     solution: string;
     example: string;
     testCases: TestCase[];
+	constraints?: string;
 }
