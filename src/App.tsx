@@ -1,11 +1,12 @@
 import React from 'react';
-import Dashboard from './CreatorDashboardComponents/Dashboard/Dashboard';
+
 import './index.css';
+import LandingPage from './LandingPage/LandingPage';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Dashboard />
+      <LandingPage/>
     </div>
   );
 };
