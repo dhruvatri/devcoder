@@ -1,0 +1,146 @@
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-dark-layer-1);
+}
+
+.signup-header {
+  background-color: var(--color-dark-layer-2);
+  padding: var(--spacing-md);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.signup-header h1 {
+  color: var(--color-brand-orange);
+  font-size: var(--font-size-xxl);
+  margin: 0;
+}
+
+.signup-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.signup-form-container {
+  background-color: var(--color-dark-layer-2);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--box-shadow);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.signup-form h2 {
+  color: var(--color-dark-gray-8);
+  font-size: var(--font-size-xl);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.signup-form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  color: var(--color-dark-label-2);
+}
+
+.signup-form input {
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-dark-divider-border-2);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-dark-fill-2);
+  color: var(--color-dark-gray-8);
+  transition: border-color 0.2s ease;
+}
+
+.signup-form input:focus {
+  border-color: var(--color-brand-orange);
+  outline: none;
+}
+
+.signup-form button {
+  background-color: var(--color-brand-orange);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: var(--font-weight-medium);
+}
+
+.signup-form button:hover {
+  background-color: var(--color-brand-orange-s);
+}
+
+.signup-form p {
+  text-align: center;
+  color: var(--color-dark-gray-7);
+}
+
+.signup-form a {
+  color: var(--color-brand-orange);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.signup-form a:hover {
+  color: var(--color-brand-orange-s);
+}
+
+.error {
+  color: var(--color-dark-pink);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.signup-footer {
+  background-color: var(--color-dark-layer-2);
+  color: var(--color-dark-gray-7);
+  text-align: center;
+  padding: var(--spacing-md);
+  font-size: var(--font-size-small);
+}
+
+/* Styles for SignWithGoogle component */
+.continue-p {
+  text-align: center;
+  color: var(--color-dark-gray-7);
+  margin: var(--spacing-md) 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container img {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.container img:hover {
+  opacity: 0.8;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon {
+  font-size: 2rem;
+  color: var(--color-brand-orange);
+  margin-right: var(--spacing-sm);
+}

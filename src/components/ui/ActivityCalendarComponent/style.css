@@ -1,0 +1,21 @@
+.activity-graph-container {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+	background-color: var(--color-dark-layer-1);
+	padding: var(--spacing-md);
+	border-radius: var(--border-radius-md);
+}
+
+.month-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.month-section {
+	margin: 0 calc(var(--spacing-sm) * 0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}

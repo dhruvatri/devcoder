@@ -1,0 +1,36 @@
+.dashboard-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	padding: var(--spacing-xl);
+	min-height: 100vh;
+	width: 100%;
+}
+
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: var(--spacing-xl);
+	width: 100%;
+	max-width: 1400px;
+}
+
+.left-column {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+}
+
+.main-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+}
+
+.card-container {
+	width: 100%;
+	box-shadow: var(--shadow-sm);
+	border-radius: var(--border-radius-md);
+	background-color: var(--color-dark-layer-1);
+	padding: var(--spacing-md);
+}
