@@ -7,7 +7,7 @@
 .split-col {
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    width: 100%;
 }
 
 .gutter {
