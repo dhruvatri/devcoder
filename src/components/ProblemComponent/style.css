@@ -4,8 +4,21 @@
 	margin-top: 20px;
 }
 
-a {
-	display: block;
+.link {
+	display: inline-block;
+	border-radius: 5px 5px 0 0;
+}
+
+.active-link {
+	background-color: var(--color-dark-layer-2);
+	color: var(--color-dark-gray-8);
+	display: inline-block;
+	border-radius: 10px 10px 0 0;
+}
+
+.active-link:hover {
+	background-color: var(--color-dark-fill-3);
+	color: var(--color-dark-gray-6);
 }
 
 nav {
@@ -27,14 +40,14 @@ nav ul {
 }
 
 nav li {
-	margin: 0 15px;
+	margin: 10px 15px 0;
 }
 
 nav a {
 	color: var(--color-dark-gray-7);
 	text-decoration: none;
 	font-size: 18px;
-	padding: 10px 15px;
+	padding: 10px 15px 0 15px;
 	border-radius: 5px;
 	transition: background-color 0.3s ease;
 }

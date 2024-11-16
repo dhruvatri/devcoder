@@ -5,10 +5,12 @@ import ProblemDescriptionComponent from "../ProblemDescriptionComponent";
 import GlobalChat from '../GlobalChat/index';
 import { Notes } from "../ui";
 
+type RouteParams = Record<"id", string>;
 
 const ProblemComponent = () => {
-	const id: string = useParams();
-	// const id:string = "1";
+	// let { id } = useParams<RouteParams>();
+	// id = id ?? "1";
+	const id:string = "1";
 
 	return (
 		// <div className='problem'>
@@ -48,7 +50,7 @@ const ProblemComponent = () => {
 				/>
 				<Route
 					path="/description"
-					Component={ProblemDescriptionComponent}
+					element={<ProblemDescriptionComponent id={id} />}
 				/>
 				<Route
 					path="/chat"

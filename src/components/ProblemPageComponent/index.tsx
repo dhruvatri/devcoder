@@ -7,7 +7,7 @@ const ProblemPageComponent = () => {
 	return (
 		<div className="problem-page">
 			<Split className="split-col" minSize={0}>
-				<ProblemComponent pid={1} />
+				<ProblemComponent />
 				{/* <CodeEditorComponent /> */}
 				<CodeEditorComponent />
 			</Split>
