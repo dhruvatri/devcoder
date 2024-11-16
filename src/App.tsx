@@ -4,16 +4,20 @@ import LearningPathSeeAll from './components/LearningPathSeeAll/LearningPathSeeA
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LeaningPathDetails from './components/LeaningPathDetails/LeaningPathDetails';
 
-const App = () => {
+import { DataProvider } from './DataContext';
 
+const App = () => {
+  const [currentUser,setCurrentUser] = React.useState<number>(1);
   return (
-    <Router>
-      <Routes>
-        <Route path="/problemset" element={<ProblemSet />} />
-        <Route path="/learning-path" element={<LearningPathSeeAll />} />
-        <Route path='/learning-path/:id' element={<LeaningPathDetails />} />
-      </Routes>
-    </Router>
+    <DataProvider>
+      <Router>
+        <Routes>
+          <Route path="/problemset" element={<ProblemSet />} />
+          <Route path="/learning-path" element={<LearningPathSeeAll />} />
+          <Route path='/learning-path/:id' element={<LeaningPathDetails />} />
+        </Routes>
+      </Router>
+    </DataProvider>
   )
 }
 

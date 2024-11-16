@@ -1,32 +1,49 @@
 import React, { useState } from 'react';
 import './ProblemList.css';
-import problemData from '../../assets/problems.json';
+// import problemData from '../../assets/problems.json';
 import { useNavigate } from 'react-router-dom';
-
-interface TestCase {
-  input: string;
-  output: string;
-}
-
-interface Problem {
-  id: number;
-  title: string;
-  description: string;
-  difficulty: 'Easy' | 'Medium' | 'Hard';
-  tags: string[];
-  solution: string;
-  example: string;
-  testCases: TestCase[];
-}
+// import submissionData from '../../assets/submissionData.json';
+import { DataContext } from '../../DataContext';
+import { useContext } from 'react';
 
 const ProblemList: React.FC = () => {
+  const { problems, submissions : submissionData , loading, learningPaths } = useContext(DataContext)!;
+  if (loading) return (
+    <div id="loading-for-data-page">
+      <div className="loading-spinner"></div>
+      <p>Loading...</p>
+    </div>
+  );
+  
+  const problemData = problems;
+  console.log("PROBLEM  ",problemData)
+  console.log("SUBMISSIONS  ",submissionData)
+
   const [probList, setProbList] = useState<Problem[]>(problemData as Problem[]);
   const [pageNo, setPageNo] = useState<number>(1);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All');
   const [selectedTag, setSelectedTag] = useState<string>('All');
+  const [submissionFilter, setSubmissionFilter] = useState<string>('All');
+  const [currentUser,setCurrentUser] = useState<number>(1);
   const problemPerPage: number = 10;
 
+  const submissions = submissionData as Submission[];
+  // To determine status of problems for sorting 
+  const getProblemStatus = (problemId: number, userId: number): string => {
+    const userSubmissions = submissions.filter(
+      (submission) => submission.problemId === problemId && submission.userId === userId
+    );
+  
+    if (userSubmissions.some((submission) => submission.status === 'completed')) {
+      return 'completed';
+    } else if (userSubmissions.length > 0) {
+      return 'attempted';
+    } else {
+      return 'to-do';
+    }
+  };
+  
   // Sorting Logic
   const filteredProblems = probList.filter((problem) => {
     const matchesSearch =
@@ -34,7 +51,10 @@ const ProblemList: React.FC = () => {
       problem.id.toString().includes(searchTerm); // Check if search term matches title or ID
     const matchesDifficulty = selectedDifficulty === 'All' || problem.difficulty === selectedDifficulty;
     const matchesTag = selectedTag === 'All' || problem.tags.includes(selectedTag);
-    return matchesSearch && matchesDifficulty && matchesTag;
+    const status = getProblemStatus(problem.id, currentUser);
+    const matchesSubmissionFilter = submissionFilter === 'All' || status === submissionFilter;
+
+    return matchesSearch && matchesDifficulty && matchesTag && matchesSubmissionFilter;
   });
 
   // Pagination logic
@@ -57,6 +77,12 @@ const ProblemList: React.FC = () => {
 
   const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTag(event.target.value);
+    setPageNo(1); // Reset to first page when filter changes
+  };
+
+  // Submission filter handler
+  const handleSubmissionFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSubmissionFilter(event.target.value);
     setPageNo(1); // Reset to first page when filter changes
   };
 
@@ -98,12 +124,21 @@ const ProblemList: React.FC = () => {
             </option>
           ))}
         </select>
+        <select value={submissionFilter} onChange={handleSubmissionFilterChange}>
+          <option value="All">Status</option>
+          <option value="completed">Completed</option>
+          <option value="attempted">Attempted</option>
+          <option value="to-do">To-Do</option>
+        </select>
       </div>
 
       <div className="problem-list">
       {currentProblems.map((problem) => (
         <div key={problem.id} className="problem-item" onClick={()=>navigate(`/problem/${problem.id}`)}>
-          <h3>{problem.id}: {problem.title}</h3>
+          <div className='question-card-header'>
+            <h3>{problem.id}: {problem.title}</h3>
+            <img className='question-status' src={getProblemStatus(problem.id,currentUser)==='completed' ? 'https://wallpapers.com/images/hd/green-check-mark-black-background-h4sar2aihe79iwgr-2.jpg' : getProblemStatus(problem.id,currentUser) ==='attempted' ? 'https://thumbs.dreamstime.com/b/red-black-grunge-brush-stroke-cross-no-decline-aggressive-vector-vintage-sign-curved-isolated-check-mark-object-dark-background-95414900.jpg' : 'https://image.freepik.com/free-icon/minus-sign-in-a-square_318-53201.jpg' }></img>
+          </div>
           <p>{problem.description}</p>
           <p>
             <strong>Difficulty:</strong> <span style={{ color: getDifficultyColor(problem.difficulty) }}>{problem.difficulty}</span>

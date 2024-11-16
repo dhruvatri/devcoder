@@ -3,8 +3,11 @@ import './ProblemSet.css'
 import LearningPath from '../LearningPath/LearningPath'
 import ProblemList from '../ProblemList/ProblemList'
 import { useNavigate } from 'react-router-dom'
+import { DataContext } from '../../DataContext';
+import { useContext } from 'react';
 
 const ProblemSet = () => {
+
   const navigate = useNavigate();
 
   function ExpandStudyPlanHandler() {
@@ -12,6 +15,14 @@ const ProblemSet = () => {
     navigate('/learning-path');
   }
 
+  const { problems, submissions, loading, learningPaths } = useContext(DataContext)!;
+  if (loading) return (
+    <div id="loading-for-data-page">
+      <div className="loading-spinner"></div>
+      <p>Loading...</p>
+    </div>
+  );
+  
   return (
     <div id='problemSetScreen'>
       <div id='plannerHeader'>
