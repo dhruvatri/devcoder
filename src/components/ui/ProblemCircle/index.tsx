@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 import "./style.css";
 import SolvedProblemList from "../SolvedProblemsList";
+import { useUserSubmissions } from "../../../hooks/submissions/useUserSubmissions";
+import { useAuth } from "../../../contexts/AuthProvider";
 
 type ProblemStats = {
 	easy: { solved: number; total: number };
@@ -107,8 +109,73 @@ const renderActiveShape = (props: any) => {
 	);
 };
 
-const ProblemCircle: React.FC<ProblemCircleProps> = ({ stats }) => {
+const ProblemCircle: React.FC<ProblemCircleProps> = () => {
+	const { user } = useAuth();
 	const [activeIndex, setActiveIndex] = useState(0);
+
+	const { data: submissionData, isLoading } = useUserSubmissions(
+		user?.uid || ""
+	);
+
+	const stats = useMemo(() => {
+		if (isLoading || !submissionData) {
+			return {
+				easy: {
+					solved: 0,
+					total: 0,
+					problems: [],
+				},
+				medium: {
+					solved: 0,
+					total: 0,
+					problems: [],
+				},
+				hard: {
+					solved: 0,
+					total: 0,
+					problems: [],
+				},
+				attempting: 0,
+			};
+		} else {
+			console.log(submissionData);
+			const easy = submissionData.filter(
+				(problem) => problem.difficulty === "Easy"
+			);
+			const medium = submissionData.filter(
+				(problem) => problem.difficulty === "Medium"
+			);
+			const hard = submissionData.filter(
+				(problem) => problem.difficulty === "Hard"
+			);
+			return {
+				easy: {
+					solved: easy.filter(
+						(problem) => problem.status === "completed"
+					).length,
+					total: easy.length,
+					problems: easy,
+				},
+				medium: {
+					solved: medium.filter(
+						(problem) => problem.status === "completed"
+					).length,
+					total: medium.length,
+					problems: medium,
+				},
+				hard: {
+					solved: hard.filter(
+						(problem) => problem.status === "completed"
+					).length,
+					total: hard.length,
+					problems: hard,
+				},
+				attempting: submissionData.filter(
+					(problem) => problem.status !== "completed"
+				).length,
+			};
+		}
+	}, [submissionData, isLoading]);
 
 	const data = [
 		{
@@ -136,6 +203,8 @@ const ProblemCircle: React.FC<ProblemCircleProps> = ({ stats }) => {
 	const totalProblems =
 		stats.easy.total + stats.medium.total + stats.hard.total;
 
+	console.log(stats);
+
 	const onPieEnter = (_: any, index: number) => {
 		setActiveIndex(index);
 	};
@@ -162,7 +231,7 @@ const ProblemCircle: React.FC<ProblemCircleProps> = ({ stats }) => {
 				</ResponsiveContainer>
 			</div>
 			<div className="difficulty-legend">
-				<SolvedProblemList />
+				<SolvedProblemList isLoading={isLoading} stats={stats} />
 			</div>
 		</div>
 	);

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import { GlobalChat, ProblemPageComponent, UserDashBoard } from "./components";
 import SelectRolePage from "./components/SelectRolePage";
@@ -12,8 +12,9 @@ const App: React.FC = () => {
 
 	return (
 		<Routes>
+			<Route path="/" element={<Navigate to="/problems/1" />} />
 			<Route
-				path="/problems/:problem_id"
+				path="/problems/:problemId"
 				element={<ProblemPageComponent />}
 			>
 				<Route index element={<Navigate to="description" />} />

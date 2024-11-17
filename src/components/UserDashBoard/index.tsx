@@ -3,6 +3,8 @@ import "./style.css";
 import { Notes, ProblemCircle, ProfileCard, StatsCard } from "../ui";
 import { mockProblemStats } from "../../data";
 import ActivityCalendar from "../ui/ActivityCalendarComponent";
+import { useUserSubmissions } from "../../hooks/submissions/useUserSubmissions";
+import { useAuth } from "../../contexts/AuthProvider";
 
 const UserDashBoard: React.FC = () => {
 	const userProfile = {
@@ -14,6 +16,8 @@ const UserDashBoard: React.FC = () => {
 		attended: 4,
 		topPercentage: 23.05,
 	};
+
+	const { user } = useAuth();
 
 	return (
 		<div className="dashboard-container">

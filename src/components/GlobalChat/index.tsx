@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, FormEvent } from "react";
+import { useState, useRef, FormEvent } from "react";
 import {
 	collection,
 	query,
@@ -7,11 +7,23 @@ import {
 	addDoc,
 	serverTimestamp,
 	FirestoreDataConverter,
+	where,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import ReactMarkdown from "react-markdown";
 import "./style.css";
 import { db, auth } from "../../utils/firebase";
+import { useAuth } from "../../contexts/AuthProvider";
+import { User } from "firebase/auth";
+import { useParams } from "react-router-dom";
+
+interface Message {
+	id: string;
+	text: string;
+	createdAt: any;
+	uid: string;
+	photoURL: string | null;
+	problemId: string;
+}
 
 const messageConverter: FirestoreDataConverter<Message> = {
 	toFirestore(message: Message) {
@@ -20,6 +32,7 @@ const messageConverter: FirestoreDataConverter<Message> = {
 			createdAt: message.createdAt,
 			uid: message.uid,
 			photoURL: message.photoURL,
+			problemId: message.problemId,
 		};
 	},
 	fromFirestore(snapshot, options) {
@@ -30,98 +43,78 @@ const messageConverter: FirestoreDataConverter<Message> = {
 			createdAt: data.createdAt,
 			uid: data.uid,
 			photoURL: data.photoURL,
+			problemId: data.problemId,
 		} as Message;
 	},
 };
 
 function GlobalChat() {
+	const { user } = useAuth();
+	const { problemId } = useParams();
 	const dummy = useRef<HTMLDivElement | null>(null);
-	const [isAtBottom, setIsAtBottom] = useState(true);
-	const [hasNewMessages, setHasNewMessages] = useState(false);
 	const messagesRef = collection(db, "messages").withConverter(
 		messageConverter
 	);
-	const messagesQuery = query(messagesRef, orderBy("createdAt"), limit(50));
-	const [messages] = useCollectionData(messagesQuery);
+
+	const currentProblemId = problemId || "1";
+
+	const messagesQuery = query(
+		messagesRef,
+		where("problemId", "==", currentProblemId),
+		orderBy("createdAt", "asc"),
+		limit(50)
+	);
+
+	const [messages, loading, error] = useCollectionData(messagesQuery);
+
 	const [formValue, setFormValue] = useState<string>("");
-	const lastMessageCount = useRef(messages?.length || 0);
-
-	useEffect(() => {
-		if (messages?.length !== lastMessageCount.current) {
-			if (!isAtBottom) {
-				setHasNewMessages(true);
-			}
-			lastMessageCount.current = messages?.length || 0;
-		}
-
-		if (isAtBottom) {
-			dummy.current?.scrollIntoView({ behavior: "smooth" });
-			setHasNewMessages(false);
-		}
-	}, [messages, isAtBottom]);
 
 	const sendMessage = async (e: FormEvent) => {
 		e.preventDefault();
-		const { uid, photoURL } = auth.currentUser!;
-		await addDoc(messagesRef, {
-			id: serverTimestamp().toString(),
-			text: formValue,
-			createdAt: serverTimestamp(),
-			uid,
-			photoURL,
-		});
-		setFormValue("");
-	};
+		if (!formValue.trim()) return;
 
-	const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-		const element = e.currentTarget;
-		const atBottom =
-			element.scrollHeight - element.scrollTop === element.clientHeight;
-		setIsAtBottom(atBottom);
-		if (atBottom) {
-			setHasNewMessages(false);
+		const { uid } = auth.currentUser!;
+
+		try {
+			await addDoc(messagesRef, {
+				id: "",
+				text: formValue.trim(),
+				createdAt: serverTimestamp(),
+				uid,
+				photoURL: user?.photoURL || null,
+				problemId: currentProblemId,
+			});
+
+			setFormValue("");
+			dummy.current?.scrollIntoView({ behavior: "smooth" });
+		} catch (err) {
+			console.error("Error sending message:", err);
 		}
 	};
 
-	const scrollToBottom = () => {
-		dummy.current?.scrollIntoView({ behavior: "smooth" });
-		setIsAtBottom(true);
-		setHasNewMessages(false);
-	};
+	if (loading) {
+		return <div>Loading messages...</div>;
+	}
+
+	if (error) {
+		return <div>Error loading messages: {error.message}</div>;
+	}
 
 	return (
-		<div className="container chat-room">
-			<div className="chat-messages" onScroll={handleScroll}>
+		<div className="chat-component">
+			<div className="chat-messages">
 				{messages &&
 					messages.map((msg) => (
-						<ChatMessage key={msg.id} message={msg} />
+						<ChatMessage key={msg.id} message={msg} user={user!} />
 					))}
 				<div ref={dummy}></div>
-				{!isAtBottom && (
-					<button
-						onClick={scrollToBottom}
-						className={`scroll-to-bottom ${
-							hasNewMessages ? "has-new" : ""
-						}`}
-					>
-						⬇️
-					</button>
-				)}
 			</div>
 			<form onSubmit={sendMessage} className="chat-form">
-				<textarea
+				<input
 					value={formValue}
 					onChange={(e) => setFormValue(e.target.value)}
-					placeholder="Type your message here... (Markdown supported)"
+					placeholder="Type your message here..."
 					className="chat-input"
-					onKeyDown={(e) => {
-						if (e.key === "Enter" && !e.shiftKey) {
-							e.preventDefault();
-							if (formValue.trim()) {
-								sendMessage(e);
-							}
-						}
-					}}
 				/>
 				<button
 					type="submit"
@@ -137,30 +130,41 @@ function GlobalChat() {
 
 interface ChatMessageProps {
 	message: Message;
+	user: User;
 }
 
-function ChatMessage({ message }: ChatMessageProps) {
+function ChatMessage({ message, user }: ChatMessageProps) {
 	const { text, uid, photoURL } = message;
 	const isSentByCurrentUser = uid === auth.currentUser?.uid;
-
-	console.log(auth.currentUser);
-
 	const messageClass = isSentByCurrentUser ? "sent" : "received";
-
-	const avatarContent = photoURL ? (
-		<img src={photoURL} alt="User Avatar" className="chat-avatar" />
-	) : (
-		<div className="avatar-placeholder">
-			{auth.currentUser?.displayName?.[0].toUpperCase() || "U"}
-		</div>
-	);
 
 	return (
 		<div className={`chat-message ${messageClass}`}>
-			<div className="message-content">
-				<ReactMarkdown className="chat-text">{text}</ReactMarkdown>
-				<div className="message-avatar">{avatarContent}</div>
+			<div className="chat-header">
+				<div
+					style={{
+						display: "flex",
+						gap: "var(--spacing-md)",
+						alignItems: "center",
+						fontWeight: "var(--font-weight-medium)",
+					}}
+				>
+					<img
+						src={photoURL || "https://avatar.iran.liara.run/public"}
+						alt="User Avatar"
+						className="chat-avatar"
+					/>
+					<h3>{user.displayName || "User"}</h3>
+				</div>
+				<p className="time" style={{ marginBottom: "0" }}>
+					{message.createdAt
+						? new Date(
+								message.createdAt.seconds * 1000
+						  ).toLocaleString()
+						: ""}
+				</p>
 			</div>
+			<p className="chat-text">{text}</p>
 		</div>
 	);
 }

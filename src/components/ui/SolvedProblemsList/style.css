@@ -1,6 +1,6 @@
 /* Problem List Container */
 .problem-list-container {
-	width: 100%;
+	width: 30rem;
 	max-width: 960px;
 	margin: 0 auto;
 	background-color: var(--color-dark-layer-1);

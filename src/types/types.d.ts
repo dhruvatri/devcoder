@@ -46,6 +46,7 @@ type Message = {
 	createdAt: { seconds: number; nanoseconds: number } | null;
 	uid: string;
 	photoURL: string | null;
+	problemId: string;
 };
 
 type runtime = {
@@ -55,13 +56,13 @@ type runtime = {
 };
 
 interface Problem {
-    id: number;
-    title: string;
-    description: string;
-    difficulty: "Easy" | "Medium" | "Hard"; // Use union type for predefined difficulty levels
-    tags: string[];
-    solution: string;
-    example: string;
-    testCases: TestCase[];
+	id: number;
+	title: string;
+	description: string;
+	difficulty: "Easy" | "Medium" | "Hard"; // Use union type for predefined difficulty levels
+	tags: string[];
+	solution: string;
+	example: string;
+	testCases: TestCase[];
 	constraints?: string;
 }
