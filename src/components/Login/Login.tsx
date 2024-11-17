@@ -1,15 +1,15 @@
 import React, { useState, FormEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "../../utils/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import "./Login.css";
-
+import { useNavigate } from "react-router-dom";
 const Login: React.FC = () => {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [error, setError] = useState<string>("");
 	const [showModal, setShowModal] = useState<boolean>(false);
-	const navigate = useNavigate();
 
 	const handleSubmit = async (e: FormEvent) => {
 		e.preventDefault();
@@ -17,7 +17,9 @@ const Login: React.FC = () => {
 
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
+			console.log("Login Success");
 			navigate("/problemset");
+			/* eslint-disable-next-line */
 		} catch (error: any) {
 			console.error("Error:", error.message);
 			setError(

@@ -15,6 +15,11 @@ import { db, auth } from "../../utils/firebase";
 import { useAuth } from "../../contexts/AuthProvider";
 import { User } from "firebase/auth";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import { Editor } from "@tinymce/tinymce-react";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import { FaTelegramPlane } from "react-icons/fa";
 
 interface Message {
 	id: string;
@@ -52,21 +57,23 @@ function GlobalChat() {
 	const { user } = useAuth();
 	const { problemId } = useParams();
 	const dummy = useRef<HTMLDivElement | null>(null);
+
+	if (!problemId) {
+		return <div>Error getting problemId</div>;
+	}
+
 	const messagesRef = collection(db, "messages").withConverter(
 		messageConverter
 	);
 
-	const currentProblemId = problemId || "1";
-
 	const messagesQuery = query(
 		messagesRef,
-		where("problemId", "==", currentProblemId),
+		where("problemId", "==", problemId),
 		orderBy("createdAt", "asc"),
 		limit(50)
 	);
 
 	const [messages, loading, error] = useCollectionData(messagesQuery);
-
 	const [formValue, setFormValue] = useState<string>("");
 
 	const sendMessage = async (e: FormEvent) => {
@@ -82,7 +89,7 @@ function GlobalChat() {
 				createdAt: serverTimestamp(),
 				uid,
 				photoURL: user?.photoURL || null,
-				problemId: currentProblemId,
+				problemId,
 			});
 
 			setFormValue("");
@@ -103,25 +110,51 @@ function GlobalChat() {
 	return (
 		<div className="chat-component">
 			<div className="chat-messages">
-				{messages &&
-					messages.map((msg) => (
-						<ChatMessage key={msg.id} message={msg} user={user!} />
-					))}
+				{messages ? (
+					messages.length === 0 ? (
+						<div>Start the conversation</div>
+					) : (
+						messages.map((msg) => (
+							<ChatMessage
+								key={msg.id}
+								message={msg}
+								user={user!}
+							/>
+						))
+					)
+				) : null}
 				<div ref={dummy}></div>
 			</div>
 			<form onSubmit={sendMessage} className="chat-form">
-				<input
+				<Editor
+					apiKey="9ebo80culi0cf3ymzrhkcr2hrrv6cqplma5bpvvilw7pr2tu"
 					value={formValue}
-					onChange={(e) => setFormValue(e.target.value)}
-					placeholder="Type your message here..."
-					className="chat-input"
+					onEditorChange={(content) => setFormValue(content)}
+					init={{
+						height: 200,
+						menubar: false,
+						plugins: [
+							"lists",
+							"link",
+							"image",
+							"preview",
+							"codesample",
+						],
+						toolbar:
+							"undo redo | bold italic | bullist numlist | link image | preview",
+						content_style:
+							"body { font-family:Arial,sans-serif; font-size:14px }",
+						skin: "oxide-dark",
+						content_css: "dark",
+						resize: false,
+					}}
 				/>
 				<button
 					type="submit"
 					disabled={!formValue.trim()}
 					className="chat-submit"
 				>
-					Send
+					<FaTelegramPlane />
 				</button>
 			</form>
 		</div>
@@ -164,7 +197,15 @@ function ChatMessage({ message, user }: ChatMessageProps) {
 						: ""}
 				</p>
 			</div>
-			<p className="chat-text">{text}</p>
+			<div className="chat-text">
+				<ReactMarkdown
+					remarkPlugins={[remarkGfm]}
+					rehypePlugins={[rehypeRaw]}
+					className="markdown"
+				>
+					{text}
+				</ReactMarkdown>
+			</div>
 		</div>
 	);
 }

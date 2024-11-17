@@ -1,0 +1,146 @@
+[
+    {
+        "submissionId": 1,
+        "userId": 1,
+        "problemId": 1,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T10:00:00Z"
+    },
+    {
+        "submissionId": 2,
+        "userId": 1,
+        "problemId": 2,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-14T11:00:00Z"
+    },
+    {
+        "submissionId": 3,
+        "userId": 1,
+        "problemId": 3,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T12:00:00Z"
+    },
+    {
+        "submissionId": 4,
+        "userId": 1,
+        "problemId": 4,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-14T13:00:00Z"
+    },
+    {
+        "submissionId": 6,
+        "userId": 1,
+        "problemId": 6,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-14T15:00:00Z"
+    },
+    {
+        "submissionId": 7,
+        "userId": 1,
+        "problemId": 7,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T16:00:00Z"
+    },
+    {
+        "submissionId": 8,
+        "userId": 1,
+        "problemId": 8,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-14T17:00:00Z"
+    },
+    {
+        "submissionId": 9,
+        "userId": 1,
+        "problemId": 9,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T18:00:00Z"
+    },
+    {
+        "submissionId": 11,
+        "userId": 1,
+        "problemId": 11,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T20:00:00Z"
+    },
+    {
+        "submissionId": 13,
+        "userId": 1,
+        "problemId": 13,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T22:00:00Z"
+    },
+    {
+        "submissionId": 14,
+        "userId": 1,
+        "problemId": 14,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-14T23:00:00Z"
+    },
+    {
+        "submissionId": 17,
+        "userId": 1,
+        "problemId": 17,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-15T02:00:00Z"
+    },
+    {
+        "submissionId": 18,
+        "userId": 1,
+        "problemId": 18,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-15T03:00:00Z"
+    },
+    {
+        "submissionId": 19,
+        "userId": 1,
+        "problemId": 19,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-15T04:00:00Z"
+    },
+    {
+        "submissionId": 20,
+        "userId": 1,
+        "problemId": 20,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-15T05:00:00Z"
+    },
+    {
+        "submissionId": 21,
+        "userId": 1,
+        "problemId": 3,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-15T06:00:00Z"
+    },
+    {
+        "submissionId": 22,
+        "userId": 1,
+        "problemId": 6,
+        "status": "attempted",
+        "isCorrect": false,
+        "timestamp": "2024-11-15T07:00:00Z"
+    },
+    {
+        "submissionId": 23,
+        "userId": 1,
+        "problemId": 9,
+        "status": "completed",
+        "isCorrect": true,
+        "timestamp": "2024-11-15T08:00:00Z"
+    }
+]

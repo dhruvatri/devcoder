@@ -1,5 +1,5 @@
 {
-  "name": "devcoder",
+  "name": "devcode-devcoder",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -37,7 +37,9 @@
     "react-split": "^2.0.14",
     "react-spring": "^9.7.4",
     "react-tooltip": "^5.28.0",
-    "recharts": "^2.13.3"
+    "recharts": "^2.13.3",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

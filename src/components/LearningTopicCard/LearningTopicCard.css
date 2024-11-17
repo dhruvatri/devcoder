@@ -1,0 +1,40 @@
+#learningPathTopic{
+    width : 100%;
+    margin-bottom: 2em;
+    border: 0.1em solid var(--color-dark-divider-border-2);
+    border-radius: 10px;
+}
+
+#learningPathTopicHeader{
+    width : 100%;
+    background-color: var(--color-dark-layer-2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding : 0.3em 2em;
+    font-size: 0.8em;
+}
+
+
+.problem-list{
+    padding: 1em;
+}
+
+#topic-completion-status{
+    height : 0.25em;
+    background-color: var(--color-brand-orange-s);
+    width : 0%;
+}
+
+.question-card-header 
+  {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1em;
+  }
+
+  .question-card-header img {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+}

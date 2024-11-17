@@ -1,0 +1,44 @@
+.problemSetLearningItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 0.5em;
+    align-items: space-around;
+    height: 20vh;
+    margin-bottom: 3em;
+}
+
+.problemSetLeaningCard{
+    background-color:var(--color-dark-layer-2); 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 18vw;
+    height: 46%;
+    padding: 0.2em;
+    border-radius: 1em;
+    box-shadow: none;
+    text-align: center;
+    border: 0.1em solid var(--color-dark-divider-border-2);
+    margin-top: 1em;
+    padding: 0.3em;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    font-size: 1.2em;
+}
+
+.problemSetLeaningCard img{
+    width: 5vh;
+    height: 5vh;
+    margin: 0em 0.5em;
+    border-radius: 1em;
+}
+
+.problemSetLeaningCard h1{
+    font-size: 1em;
+    color: var(--color-dark-label-2);
+}
+.problemSetLeaningCard:hover {
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5); /* Gray shadow with medium opacity */
+    transform: scale(1.02); /* Slight scale-up effect */
+    cursor: pointer;
+}

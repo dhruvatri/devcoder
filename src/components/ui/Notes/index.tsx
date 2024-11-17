@@ -6,13 +6,13 @@ import "./style.css";
 import AppEditor from "../Editor";
 
 const Notes: FC = () => {
-	const [isDraggable, setIsDraggable] = useState(false);
+	const [isDraggable] = useState(false);
 
 	const animation = useSpring({
 		config: { tension: 300, friction: 20 },
 	});
 
-	const toggleDraggable = () => setIsDraggable((prev) => !prev);
+	// const toggleDraggable = () => setIsDraggable((prev) => !prev);
 
 	return (
 		<>

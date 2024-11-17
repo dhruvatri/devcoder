@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from "react";
-import "./style.css";
+import { useMemo, useState } from "react";
+/* eslint-disable */
+import styles from "./style.module.css";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { link } from "framer-motion/client";
 
 type SolvedProblemListProps = {
 	isLoading: boolean;
@@ -49,9 +51,9 @@ const SolvedProblemList = ({ isLoading, stats }: SolvedProblemListProps) => {
 	}, [stats, isLoading]);
 
 	return (
-		<div className="problem-list-container">
+		<div className={styles.problemListContainer}>
 			{/* Tab Navigation */}
-			<div className="tab-navigation">
+			<div className={styles.tabNavigation}>
 				{Object.entries(categories).map(([category, { count }]) => (
 					<button
 						key={category}
@@ -68,7 +70,7 @@ const SolvedProblemList = ({ isLoading, stats }: SolvedProblemListProps) => {
 			</div>
 
 			{/* Problem List */}
-			<div className="problem-list">
+			<div className={styles.problemList}>
 				{isLoading ? (
 					<Skeleton
 						count={3}
@@ -82,7 +84,7 @@ const SolvedProblemList = ({ isLoading, stats }: SolvedProblemListProps) => {
 							(problem, index) => (
 								<li
 									key={index}
-									className="problem-item"
+									className={styles.problemItem}
 									style={{
 										listStyle: "none",
 										marginBottom: 0,
@@ -90,7 +92,7 @@ const SolvedProblemList = ({ isLoading, stats }: SolvedProblemListProps) => {
 									}}
 								>
 									<p
-										className="problem-link"
+										className={styles.problemLink}
 										style={{ color: "white" }}
 									>
 										{problem}

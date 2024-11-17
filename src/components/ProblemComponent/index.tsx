@@ -20,6 +20,7 @@ const ProblemComponent = () => {
 							className={({ isActive }) =>
 								isActive ? "active-link" : "link"
 							}
+							replace
 						>
 							Description
 						</NavLink>
@@ -30,6 +31,7 @@ const ProblemComponent = () => {
 							className={({ isActive }) =>
 								isActive ? "active-link" : "link"
 							}
+							replace
 						>
 							Notes
 						</NavLink>
@@ -40,6 +42,7 @@ const ProblemComponent = () => {
 							className={({ isActive }) =>
 								isActive ? "active-link" : "link"
 							}
+							replace
 						>
 							Chat
 						</NavLink>

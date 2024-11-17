@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 
 const AppEditor: FC = () => {
 	const [editorContent, setEditorContent] = useState<string>("");
-	const { problem_id } = useParams();
+
+	const { problemId } = useParams();
 
 	useEffect(() => {
-		const savedContent = localStorage.getItem(`${problem_id}_notes`);
+		const savedContent = localStorage.getItem(`${problemId}_notes`);
 		if (savedContent) {
 			setEditorContent(savedContent);
 		}
@@ -15,7 +16,7 @@ const AppEditor: FC = () => {
 
 	const handleEditorChange = (content: string) => {
 		setEditorContent(content);
-		localStorage.setItem(`${problem_id}_notes`, content);
+		localStorage.setItem(`${problemId}_notes`, content);
 	};
 
 	return (
