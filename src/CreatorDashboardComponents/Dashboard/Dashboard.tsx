@@ -3,15 +3,14 @@
 import { useState, useEffect } from 'react'
 import { Plus, X } from 'lucide-react'
 import styles from './Dashboard.module.css'
-import { getCreatorName } from '../../utils/firebase'
+import { getCreatorName, db } from '../../utils/firebase'
+import { collection, addDoc, getDocs } from 'firebase/firestore'
 import Header from '../Header/Header'
 import AddProblem from '../AddProblem/AddProblem'
 import AddCourse from '../AddCourse/AddCourse'
-import problemsData from '../../assets/problems.json'
-import learningPathData from '../../assets/learningPath.json'
 
 interface Problem {
-  id: number
+  id: string
   title: string
   description: string
   difficulty: string
@@ -22,7 +21,7 @@ interface Problem {
 }
 
 interface Course {
-  id: number
+  id: string
   name: string
   description: string
   imageUrl: string
@@ -36,27 +35,50 @@ export default function Dashboard() {
   const [creatorName, setCreatorName] = useState('')
   const [activeSection, setActiveSection] = useState<'problems' | 'courses'>('problems')
   const [showAddForm, setShowAddForm] = useState(false)
-  const [problems, setProblems] = useState<Problem[]>(problemsData)
-  const [courses, setCourses] = useState<Course[]>(learningPathData)
+  const [problems, setProblems] = useState<Problem[]>([])
+  const [courses, setCourses] = useState<Course[]>([])
 
   useEffect(() => {
-    const fetchCreatorName = async () => {
-      const name = await getCreatorName()
-      setCreatorName(name)
+    const fetchData = async () => {
+      try {
+        const name = await getCreatorName()
+        setCreatorName(name)
+
+        const problemsSnapshot = await getDocs(collection(db, 'problems'))
+        const problemsData = problemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Problem))
+        setProblems(problemsData)
+
+        const coursesSnapshot = await getDocs(collection(db, 'learningPath'))
+        const coursesData = coursesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Course))
+        setCourses(coursesData)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
     }
-    fetchCreatorName()
+
+    fetchData()
   }, [])
 
-  const addProblem = (problem: Omit<Problem, 'id'>) => {
-    const newProblem = { ...problem, id: problems.length + 1 }
-    setProblems([...problems, newProblem])
-    setShowAddForm(false)
+  const addProblem = async (problem: Omit<Problem, 'id'>) => {
+    try {
+      const docRef = await addDoc(collection(db, 'problems'), problem)
+      const newProblem = { ...problem, id: docRef.id }
+      setProblems([...problems, newProblem])
+      setShowAddForm(false)
+    } catch (error) {
+      console.error('Error adding problem:', error)
+    }
   }
 
-  const addCourse = (course: Omit<Course, 'id'>) => {
-    const newCourse = { ...course, id: courses.length + 1 }
-    setCourses([...courses, newCourse])
-    setShowAddForm(false)
+  const addCourse = async (course: Omit<Course, 'id'>) => {
+    try {
+      const docRef = await addDoc(collection(db, 'learningPath'), course)
+      const newCourse = { ...course, id: docRef.id }
+      setCourses([...courses, newCourse])
+      setShowAddForm(false)
+    } catch (error) {
+      console.error('Error adding course:', error)
+    }
   }
 
   const toggleSection = (section: 'problems' | 'courses') => {

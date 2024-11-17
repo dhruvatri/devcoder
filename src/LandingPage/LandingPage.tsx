@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import styles from './LandingPage.module.css'
 
 export default function LandingPage() {
@@ -28,7 +28,7 @@ export default function LandingPage() {
         </div>
       </header>
       <main className={styles.main}>
-        <h1 className={styles.logo}>CODEEDITOR</h1>
+        <h1 className={styles.logo}>DEV EDITOR</h1>
         <p className={styles.tagline}>Master Algorithms,Interview Questions</p>
         <div className={styles.editorContainer}>
           <div className={styles.problemStatement}>
