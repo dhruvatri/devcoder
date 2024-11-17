@@ -1,4 +1,22 @@
-import React from 'react';
+import React from 'react'
+import Dashboard from './CreatorDashboardComponents/Dashboard/Dashboard'
+
+const App = () => {
+  return (
+	<Dashboard />
+  )
+}
+
+export default App
+
+
+
+
+
+
+
+
+/*import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { UserCircle2, Code2, FileCode2, User, LogOut } from 'lucide-react';
 import './App.css';
@@ -37,13 +55,14 @@ const App: React.FC = () => {
           <Route path="/" />
           <Route path="/problemset" />
           <Route path="/profile"  />
+		  <Route path="/LandingPage" />
         </Routes>
       </div>
     </Router>
   );
 };
 
-export default App;
+export default App;*/
 
 
 
