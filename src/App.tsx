@@ -10,14 +10,22 @@ import LeaningPathDetails from "./components/LeaningPathDetails/LeaningPathDetai
 import LearningPathSeeAll from "./components/LearningPathSeeAll/LearningPathSeeAll";
 import ProblemSet from "./components/ProblemSet/ProblemSet";
 import { DataProvider } from "./contexts/DataContext";
+import NavBar from "./components/NavBar/NavBar";
+import LandingPage from "./LandingPage/LandingPage";
+import { useAuth } from '../src/contexts/AuthProvider';
 
 const App: React.FC = () => {
+  const {user} = useAuth();
+  const currUser = user?.uid;
+  console.log(currUser);
 	const { ProtectRoute } = useAuthGuard();
 
 	return (
+
 		<DataProvider>
-			<Routes>
-				<Route path="/" element={<Navigate to="/problemset" />} />
+			<NavBar />
+      <Routes>
+				<Route path="/" element={<LandingPage />} />
 				<Route
 					path="/problems/:problemId"
 					element={<ProblemPageComponent />}

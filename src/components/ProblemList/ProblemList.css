@@ -76,9 +76,9 @@
   .page-button {
     padding: 8px 12px;
     margin: 0 5px;
-    border: 1px solid #007bff;
-    background-color: #ffffff;
-    color: #007bff;
+    border: 1px solid var(--color-dark-divider-border-1);
+    background-color: var(--color-dark-layer-1);
+    color:white;
     border-radius: 0.5em;
     cursor: pointer;
     transition: background-color 0.3s;

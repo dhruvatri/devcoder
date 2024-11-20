@@ -5,6 +5,7 @@ import ProblemList from "../ProblemList/ProblemList";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../contexts/DataContext";
 import { useContext } from "react";
+import NavBar from "../NavBar/NavBar";
 
 const ProblemSet = () => {
 	const navigate = useNavigate();

@@ -1,0 +1,187 @@
+/* NavBar.css */
+
+:root {
+  --color-dark-layer-1: rgb(40, 40, 40);
+  --color-dark-layer-2: rgb(26, 26, 26);
+  --color-dark-label-2: rgba(239, 241, 246, 0.75);
+  --color-dark-divider-border-2: rgb(61, 61, 61);
+  --color-dark-fill-2: hsla(0, 0%, 100%, 0.14);
+  --color-dark-fill-3: hsla(0, 0%, 100%, 0.1);
+  --color-dark-gray-6: rgb(138, 138, 138);
+  --color-dark-gray-7: rgb(179, 179, 179);
+  --color-dark-gray-8: rgb(219, 219, 219);
+  --color-brand-orange: rgb(255, 161, 22);
+  --color-brand-orange-s: rgb(193, 122, 15);
+  --font-primary: "Arial", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-primary);
+  background-color: var(--color-dark-layer-2);
+  color: var(--color-dark-gray-8);
+}
+
+.dev-navbar-app {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-navbar {
+  background-color: var(--color-dark-layer-1);
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: unset;
+}
+
+.dev-navbar-container {
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+}
+
+.dev-navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  text-decoration: none;
+}
+
+.dev-navbar-logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-brand-orange);
+  transition: transform 0.3s ease;
+}
+
+.dev-navbar-logo:hover .dev-navbar-logo-icon {
+  transform: rotate(20deg);
+}
+
+.dev-navbar-logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-dark-gray-8);
+  letter-spacing: 0.5px;
+}
+
+.dev-navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.dev-navbar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-dark-gray-7);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.dev-navbar-item:hover {
+  color: var(--color-brand-orange);
+  background-color: var(--color-dark-fill-2);
+}
+
+.dev-navbar-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.dev-navbar-profile {
+  width: 2.75rem;
+  height: 2.75rem;
+  background-color: var(--color-dark-fill-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.dev-navbar-profile:hover {
+  background-color: var(--color-dark-fill-3);
+  border-color: var(--color-brand-orange);
+}
+
+.dev-navbar-profile-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--color-dark-gray-7);
+  transition: color 0.3s ease;
+}
+
+.dev-navbar-profile:hover .dev-navbar-profile-icon {
+  color: var(--color-brand-orange);
+}
+
+button.dev-navbar-item {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: inherit;
+}
+
+.dev-navbar-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .dev-navbar-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .dev-navbar-menu {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dev-navbar-item {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .dev-navbar-profile {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .dev-navbar-profile-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+
+.dev-navbar-item-button:hover {
+  color: var(--color-brand-orange);
+  background-color: var(--color-dark-fill-2);
+}

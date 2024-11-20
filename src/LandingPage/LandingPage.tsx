@@ -1,5 +1,6 @@
 import  { useState } from 'react'
 import styles from './LandingPage.module.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
   const [code, setCode] = useState(`function twoSum(nums, target) {
@@ -13,7 +14,7 @@ export default function LandingPage() {
   }
   return [];
 }`);
-
+    const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -23,12 +24,12 @@ export default function LandingPage() {
           <button className={styles.navButton}>Discuss</button>
         </nav>
         <div className={styles.authButtons}>
-          <button className={styles.loginButton}>Login</button>
+          <button className={styles.loginButton} onClick={()=>navigate('/login')}>Login</button>
           <button className={styles.registerButton}>Register</button>
         </div>
       </header>
       <main className={styles.main}>
-        <h1 className={styles.logo}>DEV EDITOR</h1>
+        <h1 className={styles.logo}>DEVCODER</h1>
         <p className={styles.tagline}>Master Algorithms,Interview Questions</p>
         <div className={styles.editorContainer}>
           <div className={styles.problemStatement}>

@@ -5,6 +5,7 @@ import App from './App.tsx'
 import { AuthProvider } from "./contexts/AuthProvider.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+import NavBar from './components/NavBar/NavBar.tsx';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
