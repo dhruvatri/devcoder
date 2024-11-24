@@ -25,29 +25,34 @@ The home page offers an intuitive interface showcasing featured problem sets, co
 ---
 
 ### 2. Login/Signup
-![Login Page](./assets/login.png)
-![Signup Page](./assets/signup.png)
+![image](https://github.com/user-attachments/assets/990816cc-3e30-447c-a053-b3994d8b3a9c)
+![image](https://github.com/user-attachments/assets/1bb1c490-9359-42e3-a7bc-35bbd2438373)
+
 
 Smooth authentication flow with secure login and new user registration options.
 
 ---
 
 ### 3. Problem Set
-![Problem Set Page](./assets/problemset.png)
+![image](https://github.com/user-attachments/assets/9f7ca694-718e-49df-9bcb-6a7e6393d7bc)
+
 
 Browse through a variety of coding challenges categorized by difficulty, topic, and tags.
 
 ---
 
-### 4. Course List
-![Course List Page](./assets/courselist.png)
+### 4. Learning Paths
+![image](https://github.com/user-attachments/assets/4667d001-9797-40e5-935f-b406c7c0c5d5)
+![image](https://github.com/user-attachments/assets/f4757813-f2d4-4adf-a810-e1586330f19e)
+
 
 Explore structured learning paths and courses to strengthen your understanding of key programming concepts.
 
 ---
 
 ### 5. Profile Page
-![Profile Page](./assets/profile.png)
+Test User Profile : 
+![image](https://github.com/user-attachments/assets/f1065baa-930b-4e0a-844d-1074c160c4e7)
 
 A personalized dashboard for users to view their progress, achievements, and learning milestones.
 
