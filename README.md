@@ -62,5 +62,5 @@ A personalized dashboard for users to view their progress, achievements, and lea
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/devcode.git
+   git clone https://github.com/dhruvatri/devcode.git
    cd devcode
